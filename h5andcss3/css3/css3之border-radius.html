@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		/*简单说明：
+	border-radius 是一种缩写方法。如果“/”前后的值都存在，那么“/”前面的值设置其水平半径，“/”后面值设置其垂直半径。如果没有“/”，则水平和垂直半径相等。另外其四个值是按照top-left、top-right、bottom-right、bottom-left的顺序来设置的其主要会有下面几种情形出现：
+1、只有一个值，那么 top-left、top-right、bottom-right、bottom-left 四个值相等。
+2、有两个值，那么 top-left 等于 bottom-right，并且取第一个值；top-right 等于 bottom-left，并且取第二个值
+3、有三个值，其中第一个值是设置top-left;而第二个值是 top-right 和 bottom-left 并且他们会相等,第三个值是设置 bottom-right。
+4、有四个值，其中第一个值是设置 top-left 而第二个值是 top-right 第三个值 bottom-right 第四个值是设置 bottom-left。*/
+		
+		*{padding: 0;margin: 0;}
+		div{width: 100px;height: 100px;margin: 0 auto;border: 1px solid black;margin-top:10px;font-size: 12px;float: left;margin-right: 50px;}
+		span{color: red;font-weight: bold;}
+		.box{border-radius:100px;}
+		.box1{border-radius:30px 50px;}
+		.box2{border-radius:30px 60px 80px;}
+		.box3{border-radius:20px 30px 40px 50px;}
+		.box4{border-radius:50px/50px;}/*此处若设置为宽高的一半，将得到一个圆形，因为水平半径和垂直半径加起来刚好等于宽高*/
+		.box5{border-radius:50px/75px;width: 100px;height: 150px}
+		.box6{border-radius:0 50%;background: yellowgreen;}
+		</style>
+	</head>
+	<body>
+		<h1>border-radius和border的取值非常相似</h1>
+		<img src="img/border-radius.png" alt="" />
+		<div class="box"><span>设置一个值时，四个角相等</span></div>
+		<div class="box1"><span>设置两个值时，左上等于右下角，左下角等于右上角</span></div>
+		<div class="box2"><span>设置三个值时，分别是：左上角，左下角等于右上角，右下角</span></div>
+		<div class="box3"><span>设置四个值时，四个角分别为设定的值</span></div>
+		<div class="box4"><span>设置水平半径和垂直半径，如果只有一组数据，则同时应用于四个角</span></div>
+		<div class="box5"><span>设置水平半径和垂直半径，得到一个宽高为3:2的椭圆</span></div>
+		
+		
+		
+		<div class="box6"><span>与百分比组合显示(0 50%)</span></div>
+	</body>
+</html>

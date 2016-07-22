@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度定位</title>
+		<!--引入百度的地图服务；-->
+		<script src="http://api.map.baidu.com/api?v=2.0&ak=b8awkqkiTZ94X2aTRpULCfBDTju4NQST"></script>
+		<style type="text/css">
+			#allmap{
+				width:600px;
+				height: 500px;
+				margin: 100px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="allmap"></div>
+	</body>
+	<script>
+	function BaiduMap(){
+		var map = new BMap.Map("allmap");
+		var point=new BMap.Point(113.3355333,23.1786435)
+		//point latitude longtitude  经纬度
+		//定位到那个地点
+		map.centerAndZoom(point,100);
+	}
+		BaiduMap();
+	</script>
+</html>

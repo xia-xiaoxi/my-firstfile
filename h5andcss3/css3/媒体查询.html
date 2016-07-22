@@ -1,0 +1,66 @@
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Media Query Demos</title>
+<style type="text/css">
+.wrapper {
+	border: solid 1px #666;	
+	padding: 5px 10px;
+	margin: 40px;
+}
+
+.viewing-area span {
+	color: #666;
+	display: none;
+}
+
+/* max-width */
+@media screen and (max-width: 600px) {
+	.one {
+		background: #F9C;
+	}
+	span.lt600 {
+		display: inline-block;
+	}
+}
+
+/* min-width */
+@media screen and (min-width: 900px) {
+	.two {
+		background: #F90;
+	}
+	span.gt900 {
+		display: inline-block;
+	}
+}
+
+/* min-width & max-width */
+@media screen and (min-width: 600px) and (max-width: 900px) {
+	.three {
+		background: #9CF;
+	}
+	span.bt600-900 {
+		display: inline-block;
+	}
+}
+
+/* max device width */
+@media screen and (max-device-width: 480px) {
+	.iphone {
+		background: #ccc;
+	}
+}
+</style>
+</head>
+
+<body>
+	<div class="wrapper one">这个盒子将变成 pink色 在可视区小于 600px时</div>
+	<div class="wrapper two">在可视区大于 900px时 这个盒子将变成 orange色</div>
+	<div class="wrapper three">在可视区大于 600px时小于900px时 这个盒子将变成 天蓝色</div>
+	<div class="wrapper iphone">下面的样式会在 max-device-width 是 480px 的设备上触发。（提示：max-device-width 是设备的实际分辨率，而 max-width 指的是可视区域分辨率。）</div>
+	<p class="viewing-area"><strong>Your current viewing area is:</strong> <span class="lt600">less than 600px</span> <span class="bt600-900">between 600 - 900px</span> <span class="gt900">greater than 900px</span></p>
+	
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		/*text-shadow:x轴偏移阴影(X Offset) y轴偏移阴影(Y Offset)  模糊半径(Blur)  阴影的颜色(Color)*/
+		
+		/*注意：
+		 X-Offset表示阴影的水平偏移距离，其值为正值时阴影向右偏移，如果其值为负值时，阴影向左偏移；Y-Offset是指阴影的垂直偏移距离，如果其值是正值时，阴影向下偏移反之其值是负值时阴影向顶部偏移；Blur是指阴影的模糊程度，其值不能是负值，如果值越大，阴影越模糊，反之阴影越清晰，如果不需要阴影模糊可以将Blur值设置为0；Color是指阴影的颜色，其可以使用rgba色。*/
+			.box{width: 500px;height: 400px;margin: 0 auto;}
+			h1{height:50px;tetx-align:center;font-size: 50px;text-shadow: 10px 0 0 red;}
+			h2{height:50px;tetx-align:center;font-size: 50px;text-shadow: 0 10px 0 red}
+			h3{height:50px;tetx-align:center;font-size: 50px;text-shadow: 0 0px 10px red}
+			h4{height:50px;tetx-align:center;font-size: 50px;text-shadow: 10px 10px 5px red}
+			h5{height:50px;tetx-align:center;font-size: 50px;text-shadow: 5px 5px 5px red,10px 10px 10px green}
+			
+			h6{height:50px;tetx-align:center;font-size: 50px;text-shadow: 2px 2px 4px black}/*记住此种配置*/
+			h6:hover{height:50px;tetx-align:center;font-size: 50px;text-shadow: 10px 10px 30px rgba(255,0,0,0.5)}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<h1>beautiful(水平偏移)</h1>
+			<h2>beautiful（垂直偏移）</h2>
+			<h3>beautiful（高斯模糊）</h3>
+			<h4>beautiful(全部加上)</h4>
+			<h4>beautiful(阴影叠加)</h4>
+			<h6>beautiful(浮雕效果)</h6>
+		</div>
+		
+		
+		
+	</body>
+</html>

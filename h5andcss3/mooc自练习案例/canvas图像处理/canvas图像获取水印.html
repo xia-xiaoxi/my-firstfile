@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		body{background: black;}
+			#canvas{display: block;margin: 0 auto;border: 1px solid #AAAAAA;}
+			#range{display: block;margin: 20px auto;width: 800px;}
+		</style>
+	
+	</head>
+	<body>
+		<!--离屏canvas技术：我们除了可以用drawImage（）传入一个图像对象；
+			也可以传进一个canvas元素，即drawImage(canvas,dx,dy),用法与图像类似		
+		-->
+		<canvas id="canvas" width="1152px" height="768px">
+			你的浏览器尚不支持canvas
+		</canvas>
+		  <canvas id="watermark-canvas" style="display:none;margin:0 auto;border:1px solid #aaa;">
+		  	<!--加上display:none;是为了不让用户看到水印canvas-->
+        您的浏览器尚不支持canvas
+    </canvas>
+		<input type="range" id="range" min="0.5" max="3.0" step="0.01" value="1.0"/>
+			
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas");
+			var context = canvas.getContext("2d");
+			var slider = document.getElementById("range")
+			
+		    var watermarkCanvas = document.getElementById("watermark-canvas")//获取水印；使用另一个canvas加水印，但其本身并不在canvas上，也称离屏canvas技术
+        	var watermarkContext = watermarkCanvas.getContext("2d")
+			
+			var image = new Image();/*创建一个image对象，可能需要经常对image进行操作，所以放在函数外面*/
+			
+				window.onload = function(){
+					
+					var scale = slider.value
+					console.log(scale)
+					image.src = "img-lg.jpg"/*写入图片地址*/
+					image.onload = function(){/*表示当图片读取完成后再进行操作（必须）*/
+							drawImageByScale1(scale)
+					slider.onmousemove = function(){/*不用onchange的原因是，拖动滚动条时不会生效，只有当放开滚动条才生效*/
+						scale = slider.value;
+						drawImageByScale1(scale)
+					}
+					
+					//设置水印canvas
+		            watermarkCanvas.width = 600//宽高
+		            watermarkCanvas.height = 100
+		
+		            watermarkContext.font = "bold 50px Arial"
+		            watermarkContext.lineWidth = "1"
+		            watermarkContext.fillStyle = "rgba( 255 , 255 , 255 , 0.5 )"
+		            watermarkContext.textBaseline = "middle";
+		            watermarkContext.fillText( "== Mr.zhang==" , 20 , 50 )
+				
+				}
+			}
+			function drawImageByScale1(scale){
+				var imgWidth = 1152*scale
+				var imgHeight = 768*scale
+				
+			/*	var sx = imgWidth/2-canvas.width/2;
+				var sy = imgHeight/2 - canvas.height/2;//此法有缺陷,当scale是小数的时候有bug
+				context.drawImage(image,sx,sy,canvas.width,canvas.height,0,0,canvas.width,canvas.height)*/
+				
+				var dx = canvas.width/2 - imgWidth/2;//改变目标图像的dx和dy;这样不会导致上面的bug;
+				var dy = canvas.height/2 - imgHeight/2;
+				context.clearRect(0,0,canvas.width,canvas.height)//每次调用清空画布
+				context.drawImage(image,dx,dy,imgWidth,imgHeight)
+				
+				/*下面为传递一个canvas给原canvas加水印，并给定指定宽高度*/
+				 context.drawImage( watermarkCanvas , canvas.width - watermarkCanvas.width ,
+                                                  canvas.height - watermarkCanvas.height )
+			}
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: orange;}
+			#mycanvas{border: 1px soldi red;background: white;}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="400px" height="400px"></canvas>
+	</body>
+	<script type="text/javascript">
+	window.onload = function(){
+		var mycanvas = document.getElementById('mycanvas')
+		var cEffect	 = mycanvas.getContext('2d')
+		var  myeffect = cEffect.createLinearGradient(0,0,300,0)
+			myeffect.addColorStop(0,"red")
+			myeffect.addColorStop(0.3,"yellow")
+			myeffect.addColorStop(0.6,"blue")
+			myeffect.addColorStop(1,"green");
+			
+			cEffect.fillStyle = myeffect
+			cEffect.fillRect(0,0,300,300)
+		
+		
+	}
+	
+	</script>
+</html>

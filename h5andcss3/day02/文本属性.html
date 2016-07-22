@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{padding: 0;margin: 0;}
+			p{text-shadow: 10px 10px 5px orange,
+						   -10px -10px 5px red ;
+			font-size:60px}
+			/*
+				第1个长度值用来设置对象的阴影水平偏移值。可以为负值
+				第2个长度值用来设置对象的阴影垂直偏移值。可以为负值
+				如果提供了第3个长度值则用来设置对象的阴影模糊值。不允许负值
+				第4个设置对象的阴影的颜色。
+				
+				可以设定多组阴影值。
+			*/
+			
+			.div1{width: 400px;height: 200px;background-clip: border-box;border: 5px solid orangered;margin-bottom: 20px;background: url(img/b2.jpg);padding: 10px;}
+			.div2{width: 400px;height: 200px;background-clip: content-box;border: 5px solid orangered;margin-bottom: 20px;background: url(img/b2.jpg);padding: 10px;background-position: center;}
+			.div3{width: 400px;height: 200px;background-clip: padding-box;border: 5px solid orangered;margin-bottom: 20px;background: url(img/b2.jpg);padding: 10px;background-position: center;}
+			strong{text-outline:1px}
+		</style>
+	</head>
+	<body>
+		<p>
+			
+			girl
+			
+		</p>
+		<strong>可以设定多组阴影值</strong>
+		
+		<div class="div1">
+			
+		</div>
+		<div class="div2">
+			
+		</div>
+		<div class="div3">
+			
+		</div>
+		
+	</body>
+</html>

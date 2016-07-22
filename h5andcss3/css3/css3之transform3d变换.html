@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		body{background: url(../day01/img/2.jpg);}
+			img{width: 130px;height: 250px;position: absolute;cursor: pointer;transition: all 1s}/*position:absolute，公用同一个中心点。*/
+			.stage{perspective: 1300px; width:500px;height: 800px;margin: 100px 0 0 400px;perspective-origin: 400px 20%;}/*perspective-origin及视角的位置*/
+			.container{transform-style: preserve-3d}/*preserve-3d表示3D透视。*/
+			
+			/*图片旋转木马是类似钢管舞旋转的运动，因此，我们改变的是rotateY的大小。若改变rotateX，则类似于体操单杠运动。而translateZ改变离Z轴的距离。所以，translateZ改变每张图片的间距，否则默认为0，其都是紧靠在一起的。*/
+		img:nth-child(1) { -webkit-transform: rotateY(0deg) translateZ(220px);box-shadow: 0 10px 10px red; -moz-transform: rotateY(0deg) translateZ(220px);box-shadow: 0 10px 10px red;
+		}
+		img:nth-child(2) { -webkit-transform: rotateY(40deg) translateZ(220px); box-shadow: 0 10px 10px yellow;
+		-moz-transform: rotateY(40deg) translateZ(220px); box-shadow: 0 10px 10px yellow;
+		}
+		img:nth-child(3) { -webkit-transform: rotateY(80deg) translateZ(220px); box-shadow: 0 10px 10px orangered;
+		-moz-transform: rotateY(80deg) translateZ(220px); box-shadow: 0 10px 10px orangered
+		}
+		img:nth-child(4) { -webkit-transform: rotateY(120deg) translateZ(220px); box-shadow: 0 10px 10px purple;
+		-moz-transform: rotateY(120deg) translateZ(220px); box-shadow: 0 10px 10px purple
+		}
+		img:nth-child(5) { -webkit-transform: rotateY(160deg) translateZ(220px); box-shadow: 0 10px 10px blue;
+		-moz-transform: rotateY(160deg) translateZ(220px); box-shadow: 0 10px 10px blue
+		}
+		img:nth-child(6) { -webkit-transform: rotateY(200deg) translateZ(220px); box-shadow: 0 10px 10px green;
+		-moz-transform: rotateY(200deg) translateZ(220px); box-shadow: 0 10px 10px green;
+		}
+		img:nth-child(7) { -webkit-transform: rotateY(240deg) translateZ(220px); box-shadow: 0 10px 10px deepskyblue;
+		-moz-transform: rotateY(240deg) translateZ(220px); box-shadow: 0 10px 10px deepskyblue
+		}
+		img:nth-child(8) { -webkit-transform: rotateY(280deg) translateZ(220px); box-shadow: 0 10px 10px brown;
+		-moz-transform: rotateY(280deg) translateZ(220px); box-shadow: 0 10px 10px brown;
+		}
+		img:nth-child(9) { -webkit-transform: rotateY(320deg) translateZ(220px); box-shadow: 0 10px 10px crimson;
+		-moz-transform: rotateY(320deg) translateZ(220px); box-shadow: 0 10px 10px crimson;
+		}
+		</style>
+		<script src="../jquery-1.12.0.js"></script>
+		<script>
+			$(function(){
+				var $container = $('.container')
+				var aImg = $container.find('img')
+				console.log(aImg.length)
+				var record = 0
+				$container.on('click','img',function(){
+					
+					console.log(1)
+					for (var i=0;i<aImg.length;i++) {
+						aImg.eq(i).css('transform','rotateY('+(i+1+record)*40+'deg) translateZ(220px)')		
+						}
+					record++;
+					
+				})
+			})
+		</script>
+		
+	</head>
+	<body>
+		<div class="stage">
+			<div class="container">
+				<img src="img/mei1.jpg"/>
+				<img src="img/mei10.jpg"/>
+				<img src="img/mei11.jpg"/>
+				<img src="img/mei12.jpg"/>
+				<img src="img/mei5.png"/>
+				<img src="img/mei13.jpg"/>
+				<img src="img/mei7.jpg"/>
+				<img src="img/mei8.jpg"/>
+				<img src="img/mei9.jpg"/>
+			</div>
+		</div>
+	</body>
+</html>

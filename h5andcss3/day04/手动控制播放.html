@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<script>
+		
+		window.onload = function(){
+		
+			 //获取相应的video标签
+			 var controvideo = document.getElementById('controlVideo')
+            var video = document.getElementById('video');
+            var aButton = document.getElementsByTagName('button')
+            //播放方法
+            
+            var playcheck = true
+            aButton[0].onclick=	function bofang(){
+               
+                  if( playcheck){
+                    // 有声音状态下状态下
+                    this.innerHTML = "暂停";
+                     video.play();
+                     playcheck=false;
+                }else{
+                    this.innerHTML = "播放";
+                     video.pause();
+                     playcheck=true;
+                }
+            }
+           
+            aButton[1].onclick=function kuaijin(){
+                video.currentTime += 10;
+            }
+            //快退
+            aButton[2].onclick=function kuaitui(){
+                video.currentTime -= 10;
+            }
+            //静音、不静音
+           aButton[3].onclick= function shutup(obj){
+                if(video.muted){
+                    // 有声音状态下状态下
+                    this.innerHTML = "静音";
+                    video.muted = false;
+                }
+                else{
+                    this.innerHTML = "声音";
+                    video.muted = true;
+                }
+            }
+            //加速播放
+           aButton[4].onclick= function soso(){
+                video.playbackRate = 3;
+            }
+            //减速播放
+            aButton[5].onclick=function yu(){
+                video.playbackRate = 1/3;
+            }
+            //正常播放
+           aButton[6].onclick= function normal(){
+           	
+                video.playbackRate = 1; //默认播放速率为1
+            }
+            //调高声音
+           aButton[7].onclick= function upper(){
+	           	if(video.volume==1){
+	           		video.volume=1
+	           	}else{
+	           		 video.volume += 0.2;//声音值的范围是0-1
+	           	}
+            }
+            //减小声音
+           aButton[8].onclick= function lower(){
+           		if (video.volume==0) {
+           			video.volume =0
+           		} else{
+           			video.volume -= 0.2;
+           		}
+                
+            }
+            aButton[9].onclick= function(){
+               
+              	 controvideo.mozRequestFullScreen();
+              	 controvideo.requestFullScreen();
+            }
+            aButton[10].onclick= function(){
+               
+				document.mozCancelFullScreen();
+				document.cancelFullScreen();
+
+            }
+
+    }
+			
+			
+				
+		
+		</script>
+		<style type="text/css">
+			.control_btn{position:absolute;left: 10px;top:405px}
+			button{background: mediumpurple;}
+		</style>
+	<body>
+		<div id="controlVideo">
+			<video  id="video" width="800px" height="500px" src="../B.mp4" preload="auto" >
+			</video>
+			<div class="control_btn">
+				<button >播放</button>
+		       	<button >快进10秒</button>
+		        <button >快退10秒</button>
+		        <button >静音</button>
+		        <button >加速播放</button>
+		        <button >减速播放</button>
+		        <button >正常播放</button>
+		        <button >提高嗓门</button>
+		        <button >降低嗓门</button>
+				<button >全屏</button>
+				<button >取消全屏</button>
+			</div>
+			
+		</div>
+	</body>
+</html>

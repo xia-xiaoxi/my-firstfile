@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+	语法： transition ： [<'transition-property'> || <'transition-duration'> || <'transition-timing-function'> || <'transition-delay'> [, [<'transition-property'> || <'transition-duration'> || <'transition-timing-function'> || <'transition-delay'>]]*		
+	一、transition-property是用来指定当元素其中一个属性改变时执行transition效果		
+			
+	二、transition-duration是用来指定元素 转换过程的持续时间
+	三、transition-timing-function的值允许你根据时间的推进去改变属性值的变换速率，transition-timing-function有6个可能值：
+	1、ease：（逐渐变慢）默认值，ease函数等同于贝塞尔曲线(0.25, 0.1, 0.25, 1.0).
+	2、linear：（匀速），linear 函数等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0).
+	3、ease-in：(加速)，ease-in 函数等同于贝塞尔曲线(0.42, 0, 1.0, 1.0).
+	4、ease-out：（减速），ease-out 函数等同于贝塞尔曲线(0, 0, 0.58, 1.0).
+	5、ease-in-out：（加速然后减速），ease-in-out 函数等同于贝塞尔曲线(0.42, 0, 0.58, 1.0)
+	6、cubic-bezier：（该值允许你去自定义一个时间曲线）， 特定的cubic-bezier曲线。 (x1, y1, x2, y2)四个值特定于曲线上点P1和点P2。所有值需在[0, 1]区域内，否则无效。
+	四、transition-delay是用来指定一个动画开始执行的时间，也就是说当改变元素属性值后多长时间开始执行transition效果，其取值：<time>为数值，单位为s（秒）或者ms(毫秒)
+	
+	***综合上述我们可以给transition一个速记法：transition: <property> <duration> <animation type> <delay>	
+	-->
+	
+	<style>
+		#box{position: absolute;left: 0;top: 0;width: 100px;height: 100px;background: orange;border: 1px solid red;transition: width 2s ease-in 3s,height 2s ease-out,background 2s ,left 2s}
+		#box:hover{width: 300px;height: 300px;background: red;left: 200px;}
+	</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="angular-1.3.0.js"></script>
+	</head>
+	<body>
+		<!--控制器不仅声明属性也可以声明方法-->
+	<div ng-app="" ng-controller="MyController">
+	     Your name:
+	     <input type="text" ng-model="username"><!--取得username属性值-->
+	     <button ng-click="sayHello()">打招呼</button><!--调用sayHello方法-->
+	     <hr />
+	     {{greeting}}
+	</div>
+ 
+	<script>
+	function MyController($scope) {
+	  $scope.username = 'World';
+	  $scope.sayHello = function() {/*此处声明一个sayHello方法 。*/
+	    $scope.greeting= 'Hello ' + $scope.username + '!';
+	  };
+	}
+</script>
+</script>
+</html>

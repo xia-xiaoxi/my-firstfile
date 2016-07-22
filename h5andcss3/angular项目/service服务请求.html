@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="angular-1.3.0.js"></script>
+</head>
+<body ng-app = "angularRouteDemo">
+	<section ng-controller = "homeCtrl">
+		<p>{{test}}</p>
+		<p>{{name}}</p>
+		<input type="text" ng-model = "name" />
+		<button ng-click = "submit()">提交</button>
+	</section>
+</body>
+<script>
+	var app = angular.module('angularRouteDemo', []);
+	app.controller('homeCtrl',['$scope','$http','$interval','instance',function($scope, $http,$interval,instance) {
+		  $scope.test = "123";
+		 
+	   	  $interval(function(){
+
+	   	  	console.log($scope.test)
+	   	  },1000)
+	   	  /*打印instance*/
+	  	console.log(instance.name);
+		console.log(instance.addFunc(1,2))
+		
+	 	 $scope.submit = function(){
+	 	 		$http.get("http://1.wsscatapi.applinzi.com/?format="+$scope.name).success(function (e) {
+		      console.log(e);
+		      $scope.name = e;
+		   })
+	 	 	
+	 	 }
+	}]);
+	
+
+	app.service('instance',[function(){
+		//console.log("这是我的服务")
+		var obj = {};
+		obj.addFunc = function(a,b){
+			return a+b;
+		}
+		obj.name = 'zhang'
+		return obj;
+	}])
+</script>
+
+
+</html>

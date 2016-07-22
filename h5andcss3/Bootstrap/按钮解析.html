@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+	</head>
+	<body>
+		<pre>一、按钮按钮也是Bootstrap框架核心内容之一。因为按钮是Web制作中不可缺少的东西。而且不同的Web页面具有不同的按钮风格，甚至说同一个Web网站或应用程序具有多种按钮风
+格，比如说不同的按钮颜色、大小和状态等。那么Bootstrap框架也考虑了这些因素，接下来的内
+容我们一起来探讨Bootstrap框架中的另一核心部分内容——按钮。</pre>
+	 <button class="btn" type="button">基础按钮.btn</button>  
+   <button class="btn btn-default" type="button">默认按钮.btn-default</button> 
+   <button class="btn btn-primary" type="button">主要按钮.btn-primary</button> 
+   <button class="btn btn-success" type="button">成功按钮.btn-success</button> 
+   <button class="btn btn-info" type="button">信息按钮.btn-info</button> 
+   <button class="btn btn-warning" type="button">警告按钮.btn-warning</button> 
+   <button class="btn btn-danger" type="button">危险按钮.btn-danger</button> 
+   <button class="btn btn-link" type="button">链接按钮.btn-link</button> 
+    <br /><br />
+   <pre>二、多标签支持一般制作按钮除了使用button标签元素之外，还可以使用input type=submit和a标签等。同样，在Bootstrap框架中制作按钮时，除了刚才所说的这些标签元素之
+  外，还可以使用在其他的标签元素上，唯一需要注意的是，要在制作按钮的标签元素上添加
+ 类名“btn”。如果不添加是不会有任何按钮效果。</pre>
+ <button class="btn btn-default" type="button">button标签按钮</button> 
+<input type="submit" class="btn btn-default" value="input标签按钮"/>
+
+<span class="btn btn-default">span标签按钮</span>  
+<div class="btn btn-default">div标签按钮</div>  <br /> <br />
+ <strong>注意：虽然在Bootstrap框架中使用任何标签元素都可以实现按钮风格，但个人并不建议这样使用，为了避免浏览器兼容性问题，个人强烈建议使用button或a标签来制作按钮。</strong>
+   <br />
+   
+   
+   <pre>三、按钮大小上一节介绍了按钮的定制风格，也就是如何实现Web页面中多种风格按钮。在Bootstrap框架中，对于按钮的大小，也是可以定制的。类似于input一样，通过在基础按钮“.btn”的基础上追加类名来控制按钮的大小。在Bootstrap框架中提供了三个类名来控制按钮大小：</pre>
+      <button class="btn btn-primary btn-lg" type="button">大型按钮.btn-lg</button> 
+    <button class="btn btn-primary" type="button">正常按钮</button>
+    <button class="btn btn-primary btn-sm" type="button">小型按钮.btn-sm</button>
+   
+   <br /><br />
+   <pre>四、块状按钮
+从前面几节的内容中，大家可能发现了，每个示例中的按钮宽度都是依靠按钮文本和padding的值来决定。但有时候在制作按钮的时候需要按钮宽度充满整个父容器（width:100%），特别是在移动端的制作中。那么前面的方法我们都无法很好的实现，除非重新定义按钮的宽度。其实在Bootstrap中并不需要这样做，Bootstrap框架中提供了一个类名“btn-block”。按钮使用这个类名就可以让按钮充满整个容器，并且这个按钮不会有任何的padding和margin值。在实际当中，常把这种按钮称为块状按钮。</pre>
+      <button class="btn btn-primary btn-lg" type="button">大型按钮.btn-lg</button> 
+    <button class="btn btn-primary" type="button">正常按钮</button>
+    <button class="btn btn-primary btn-sm" type="button">小型按钮.btn-sm</button>
+    <button class="btn btn-primary btn-xs" type="button">超小型按钮.btn-xs</button>   
+   <br /><br />
+   
+   <pre>五、按钮状态——活动状态
+Bootstrap框架针对按钮的状态做了一些特殊处理。在Bootstrap框架中针对按钮的状态效果主要分为两种：活动状态和禁用状态。
+Bootstrap按钮的活动状态主要包括按钮的悬浮状态(:hover)，点击状态(:active)和焦点状态（:focus）几种。当按钮处理正在点击状态（也就是鼠标按下的未松开的状态），对于button元素是通过“:active”伪类实现，而对于a这样的标签元素则是通过添加类名“.active”来实现。</pre>
+   
+     <button class="btn" type="button">基础按钮.btn</button>  
+   <button class="btn btn-default" type="button">默认按钮.btn-default</button> 
+   <button class="btn btn-primary" type="button">主要按钮.btn-primary</button> 
+   <button class="btn btn-success" type="button">成功按钮.btn-success</button> 
+   <button class="btn btn-info" type="button">信息按钮.btn-info</button> 
+   <button class="btn btn-warning" type="button">警告按钮.btn-warning</button> 
+   <button class="btn btn-danger" type="button">危险按钮.btn-danger</button> 
+   <button class="btn btn-link" type="button">链接按钮.btn-link</button> 
+   <br /><br />
+   
+   <pre>按钮状态——禁用状态
+和input等表单控件一样，在Bootstrap框架的按钮中也具有禁用状态的设置。禁用状态与其他状态按钮相比，就是背景颜色的透明度做了一定的处理，opcity的值从100%调整为65%。
+
+在Bootstrap框架中，要禁用按钮有两种实现方式：
+
+方法1：在标签中添加disabled属性
+
+方法2：在元素标签中添加类名“disabled”
+
+两者的主要区别是：
+
+“.disabled”样式不会禁止按钮的默认行为，比如说提交和重置行为等。如果想要让这样的禁用按钮也能禁止按钮的默认行为，则需要通过JavaScript这样的语言来处理。对于a标签也存在类似问题，如果通过类名“.disable”来禁用按钮，其链接行为是无法禁止。而在元素标签中添加“disabled”属性的方法是可以禁止元素的默认行为的。</pre>
+	
+   	<button class="btn btn-primary btn-lg btn-block" type="button" disabled="disabled">通过disabled属性禁用按钮</button> 
+	<button class="btn btn-primary btn-block disabled" type="button">通过添加类名disabled禁用按钮</button>
+	<button class="btn btn-primary btn-sm btn-block" type="button">未禁用的按钮</button>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+	</body>
+</html>

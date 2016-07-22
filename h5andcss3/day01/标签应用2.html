@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="url" list="url_list" name="link" />
+			<datalist id="url_list">
+				<option label="W3CSchool" value="http://www.W3CSchool.cn" />
+				<option label="Google" value="http://www.google.com" />
+				<option label="Microsoft" value="http://www.microsoft.com" />
+			</datalist>
+			<input type="button" value='提交'>
+			<input type="reset" value="reset" />
+			<!--
+				list 属性规定输入域的 datalist。datalist 是输入域的选项列表。
+				注意datalist与input必须用在一起，并且input的list值必须与datalist的id名一致，
+				option 元素永远都要设置 value 属性
+			-->
+		</form>
+		
+		<form action="">
+			<input type="text" name="" id="" value="" placeholder="只读readonly" readonly autofocus/>
+			<input type="text" name="" id="" value="" placeholder="禁用disabled" disabled />
+			<!--注意readonly 和diabled的区别-->
+			<input type="text" name="" id="" value="" placeholder="自动获取焦点" autofocus/>
+			<!--autofocus自动获取焦点，若同时给定多个input该属性，则以第一个为准-->
+			<input type="text" name="" pattern="[0-9]{3}" placeholder="输入三个数字" title="请输入三个数字"/>		<!--注意pattern的使用方法
+				模式（pattern） 是正则表达式。您可以在我们的 JavaScript 教程中学习到有关正则表达式的内容
+			，title为提示信息-->
+			<input type="button" value='提交'>
+			<input type="reset" value="reset" />
+			<input type="submit" value="submit" />
+		</form>
+		
+		<form action="" method="post">
+			<input type="text" name="" id="" value="" placeholder="账户" required/>
+			<!--required为检测必填项-->
+			<input type="text" name="" id="" value="" placeholder="密码" />
+			<input type="number" name="" id="" value="" placeholder="年龄" min="20" max="30"/>
+			<!--number只能是数字 并且给了最小值和最大值 不能输入数字以外的值-->
+			<input type="number" name="" id="" value="" placeholder="年龄+5" min="20" step="5"/>	
+			<!--step属性为每一步上升5-->
+			<input type="text" name="" id="" value="" placeholder="号码" maxlength="11"/>
+			<!--设置最大长度为11，则只能输入11位数字 住一改类型必须为text类型才可-->
+			<input type="reset" value="reset" />
+			<input type="submit" value="提交"/>
+		</form>
+		
+		<form action="" method="post">
+			<input type="url" name="" id="" value="" placeholder="链接地址"/>
+			<!--必填一个url的值-->
+			<input type="email" name="" id="" value="" placeholder="邮箱地址"/>
+			<input type="reset" value="reset" />
+			<input type="submit" value="提交"/>
+		</form>
+		
+		<form action="" method="post">
+			<input type="date" name="data1" id="" value="2016-07-04" placeholder="日期"/>
+			<input type="time" name="time1" id="" value="15:35" placeholder="时间"/>
+			<input type="range" name="time1" id=""  placeholder="范围" value="25" min="0" max="100" step="5"/><!--范围拖动条，默认值为0-100，可以设置每一步拖动的步数，value值为滚动条上的位置-->
+			<input type="color" placeholder="颜色" />
+			<input type="reset" value="reset" />
+			<input type="submit" value="提交"/>
+		</form>
+		
+		<!--output和range的混合的应用-->
+		<form action="" method="post" oninput="sum.value=parseInt(a.value)+parseInt(b.value)">
+			<input type="number"  id="b" value="50" />+
+			<input type="range" name="time1" id="a"  placeholder="范围" value="50" min="0" max="100" step="5"/>=<!--范围拖动条，默认值为0-100，可以设置每一步拖动的步数，value值为滚动条上的位置-->
+			<output name="sum" ></output>
+			<!--注意output的应用-->
+			
+		</form>
+		
+		<form action="" method="post">
+			<input type="file" value="传文件" multiple/>
+			<input type="text" autocomplete="on"/>
+			<!--自动匹配完成，曾经输入过的会提示-->
+			<input type="submit" value="提交"/>
+		</form>
+	</body>
+</html>

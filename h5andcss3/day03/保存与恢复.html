@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: orange;}
+			#mycanvas{border: 1px solid red;background: white;}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="400px" height="400px"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var mycanvas = document.getElementById('mycanvas')
+			var cEffect	 = mycanvas.getContext('2d')
+				cEffect.fillStyle = "#4169E1"
+				cEffect.fillRect(100,100,100,100)
+				cEffect.save();
+				
+				cEffect.fillStyle = "orangered"
+				cEffect.fillRect(200,200,100,100)
+				cEffect.fillRect(0,0,100,100)//继承橙色
+				
+				cEffect.restore();//恢复保存的样式，即开始用了save()方法出的样式
+				cEffect.fillRect(300,300,100,100)
+				
+				cEffect.clearRect(0,0,150,150)
+			/*多级还原：是这么个意思我们在红色的时候保存一下，设置成绿色再保存一下，最后设置成蓝色画几笔，此时开始还原，还原一次时，变成绿色状态，再还原一次，又变成红色状态。*/
+			/*请记住：最后保存的最先还原！restore总是还原离他最近的save点（已经还原的不能第2次还原到他）。*/
+		
+		
+		}
+	
+	</script>
+</html>

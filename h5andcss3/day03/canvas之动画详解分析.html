@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: black;}
+			canvas{background: white;}
+			/*#canvas{width: 400px;height: 400px;}*/
+		</style>
+		<script>
+			/*假设我们用html与canvas来做一个相同的动画：一个红色正方形由网页左边移动到右边。那么：
+			 * html动画：通过html与css整出一个正方形，然后不断的设置正方形的left值
+			 * canvas动画：先在起点位置绘制一个正方形，然后清空画布，在下一个位置再绘制一个正方形；然后又清空，又在下一个位置绘制一个正方形。。。——如此循环，简单的说就是不停的绘制，不停的清空。由此看来，好像canvas是个傻子一样。
+谁叫canvas无法取得他上面画的元素呢？那么，如果我的动画要1000个元素同时动怎么办呢？标准答案是不停的重绘这1000个元素。*/
+			window.onload = function(){
+				var mycanvas = document.getElementById('canvas')
+				var cEffect  =  mycanvas.getContext('2d')
+				
+				cEffect.beginPath();
+				cEffect.moveTo(100.5,20.5);//.5是为了避免线条尖角处的问题
+				cEffect.lineTo(200.5,20.5);
+				cEffect.stroke();
+				cEffect.moveTo(100.5,40.5);
+				cEffect.lineTo(200.5,40.5)
+				cEffect.strokeStyle = '#f00';
+				cEffect.stroke();
+		
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="400px" height="400px" ></canvas>
+		<canvas id="canvas1" width="400px" height="400px" ></canvas>
+	
+	
+	</body>
+</html>

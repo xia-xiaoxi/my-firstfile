@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			  /*给这个按钮创建一个动名名称：buttonLight，然后在每个时间段设置不同的background,color来达到变色效果，改变box-shadow来达到发光效果；"from"就相当于"0%"而"to"相当于"100%"*/
+		 /*Keyframes具有其自己的语法规则，他的命名是由"@keyframes"开头，后面紧接着是这个“动画的名称”加上一对花括号“{}”*/
+		
+/*两种语法格式: 
+  @keyframes animation-name {
+     from {
+       Properties:Properties value;//属性和属性值
+     }
+     Percentage {//中间过渡的百分比位置
+       Properties:Properties value;
+     }
+     to {
+       Properties:Properties value;
+     }
+   }
+   或者全部写成百分比的形式：
+   @keyframes animation-name {
+      0% {
+         Properties:Properties value;
+      }
+      Percentage {
+         Properties:Properties value;
+      }
+      100% {
+         Properties:Properties value;
+      }
+    }
+ */
+  @-webkit-keyframes 'buttonLight' {
+     from {
+       background: rgba(96, 203, 27,0.5);
+       -webkit-box-shadow: 0 0 5px rgba(255, 255, 255, 0.3) inset, 0 0 3px rgba(220, 120, 200, 0.5);
+       color: red;
+     }/*从此处开始 ；阴影类型为“inset”时，其投影就是内阴影*/
+     25% {
+       background: rgba(196, 203, 27,0.8);
+       -webkit-box-shadow: 0 0 10px rgba(255, 155, 255, 0.5) inset, 0 0 8px rgba(120, 120, 200, 0.8);
+       color: blue;
+    }
+    50% {
+      background: rgba(196, 203, 127,1);
+      -webkit-box-shadow: 0 0 5px rgba(155, 255, 255, 0.3) inset, 0 0 3px rgba(220, 120, 100, 1);
+      color: orange;
+    }
+    75% {
+      background: rgba(196, 203, 27,0.8);
+      -webkit-box-shadow: 0 0 10px rgba(255, 155, 255, 0.5) inset, 0 0 8px rgba(120, 120, 200, 0.8); 
+      color: black;
+    }
+   to {
+     background: rgba(96, 203, 27,0.5);
+     -webkit-box-shadow: 0 0 5px rgba(255, 255, 255, 0.3) inset, 0 0 3px rgba(220, 120, 200, 0.5);
+     color: green;
+    }/*到此处结束*/
+  }
+  a.btn {
+    /*按钮的基本属性*/
+    background: #60cb1b;
+    font-size: 16px;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.3);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 0 5px rgba(255, 255, 255, 0.6) inset, 0 0 3px rgba(220, 120, 200, 0.8);
+    -webkit-box-shadow: 0 0 5px rgba(255, 255, 255, 0.6) inset, 0 0 3px rgba(220, 120, 200, 0.8);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.6) inset, 0 0 3px rgba(220, 120, 200, 0.8);
+    /*调用animation属性，从而让按钮在载入页面时就具有动画效果*/
+    -webkit-animation-name: "buttonLight"; /*动画名称，需要跟@keyframes定义的名称一致*/
+    -webkit-animation-duration: 5s;/*动画持续的时间长*/
+    -webkit-animation-iteration-count:infinite ;/*动画循环播放的次数(无限次）*/
+  }
+		</style>
+	</head>
+	<body>
+		<h1>animation的用法</h1>
+		<img src="img/animation-pro.png"/>
+		 <a href="" class="btn">发光的button</a>
+	</body>
+</html>

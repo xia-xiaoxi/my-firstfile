@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				text-align: center;
+				line-height: 50%;
+				font-weight: bold;
+				color: yellow;
+				text-shadow: 5px 5px 5px black;
+				margin: 0 auto;
+				margin-top: 50px;
+				margin-right: 50px;
+				float: left;
+			}
+			/*box-shadow:阴影类型 X轴位移 Y轴位移 阴影大小 阴影扩展 阴影颜色}*/
+			.box{
+				line-height: 50px;
+				width: 200px;
+				height: 50px;
+				background:#B7DAFF;
+				box-shadow:1px 1px 1px black,
+				 2px 2px 2px black,3px 3px 3px black,4px 4px 4px black;
+				 border-radius: 10px;
+			}
+			/*通过控制阴影的半径将其加上多重的类似边框*/
+			.box1{
+				width: 200px;
+				height: 50px;
+				line-height: 50px;
+				background:#B7DAFF;
+				box-shadow:0px 0px 0px 5px coral,
+				 0px 0px 0px 10px red,0px 0px 0px 15px dodgerblue,0px 0px 10px 20px purple;
+				 border-radius: 10px;
+			}	
+			/*通过border来画出特殊形状,注意，只有当border-radius的半径值大于border本身的宽度时才会出现内圆角*/	
+			.box2{
+			width: 100px;height: 50px;
+			border-top: 50px solid red;
+			border-left: 1px solid red;
+			border-top-left-radius: 100px;
+			-webkit-filter: drop-shadow(-5px 5px 10px  purple );
+			-moz-filter: drop-shadow(-5px 5px 10px  purple );
+			}	
+			
+			.box3{
+			width: 0;height: 0px;
+			border: 80px solid transparent;
+			border-top-color: orangered;
+			-webkit-filter: drop-shadow(-5px 5px 10px  purple );
+			-moz-filter: drop-shadow(-5px 5px 10px  purple );
+			}	
+			.box4{
+				padding-top: 20px;
+			width: 150px;height: 80px;
+			background: deepskyblue;
+			box-shadow:
+				 0px 0px 0px 5px red,0px 0px 0px 10px orangered,0px 0px 10px 20px purple;
+				 border-radius: 10px;
+			}	
+			.box4 span{
+				margin: 0 auto;
+				display: block;
+				padding-top: 20px;
+				width: 100px;
+				height: 50px;
+				background:#B7DAFF;
+				box-shadow:1px 1px 1px black,
+				 2px 2px 2px black,3px 3px 3px black,4px 4px 4px black;			
+				 border-radius: 10px;
+			}
+			
+			.box4 span em{
+				font-size: 12px;
+				line-height: 20px;
+				margin: 0 auto;
+				display: block;
+				width: 50px;
+				height: 20px;
+				background:red;
+				box-shadow:1px 1px 1px black,
+				 2px 2px 2px black,3px 3px 3px black,4px 4px 4px black;			
+				 border-radius: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			按钮
+		</div>
+		<div class="box1">
+			阴影
+		</div>
+		<div class="box2">
+			牛角
+		</div>
+		<div class="box3">
+			三角
+		</div>
+		<div class="box4">
+			<span>
+				<em>
+					按钮
+				</em>
+			</span>
+		</div>
+	</body>
+</html>

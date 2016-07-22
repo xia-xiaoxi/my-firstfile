@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html ng-app = "angularRoute">
+<head>
+<meta charset="utf-8">
+<style>
+	section{
+		display:block;
+		margin: 50px 50px;
+	}
+	body{font-size: 26px;}
+	p{height: 25px;margin: 0;}
+</style>
+<script src="angular-1.3.0.js"></script>
+<script src="angular-route.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+</head>
+<body>
+	<section ng-controller ="homeCtrl">
+		<!--123{{name}} <br />-->
+		<a href="#/detail">跳转到detail页面</a><br />
+		<a href="#/home">跳转到home页面</a><br />
+	
+	</section>
+	<!--在主视图模板中指定加载子视图的位置,单页面程序都是局部刷新的，那这个“局部”是哪里呢，这就轮到ngView出马了，只需在模板中简单的使用此指令，在哪里用，哪里就是“局部”-->
+	<div ng-view=""></div>
+</body>
+<script>
+	var app = angular.module('angularRoute', ['ngRoute']);//模块声明中注入对ngRoute的依赖;
+	
+	/*$routeProvider提供了定义路由表的服务，它有两个核心方法，when(path,route)和otherwise(params)，先看一下核心中的核心when(path,route)方法。*/
+	app.config(function($routeProvider){
+		$routeProvider.when('/home',{
+			controller:'homeCtrl',/*注意此处的名称必须与下面的控制器代码引入的名称一致*/
+			templateUrl:'home1.html'
+		}).
+		when('/detail/:id',{
+			controller:'detailCtrl',/*function或string类型。在当前模板上执行的controller函数，生成新的scope*/
+			templateUrl:'detail.html'/*string或function类型，当视图模板为单独的html文件或是使用了<script type="text/ng-template">定义模板时使用*/
+		}).when('/edit/:id', {
+			controller: 'editCtrl',
+			templateUrl: 'edit.html'
+		}).when('/add',{
+			controller:'addCtrl',/*注意此处的名称必须与下面的控制器代码引入的名称一致*/
+			templateUrl:'add.html'
+		})
+		
+	})
+	/*路由就是#这个符号加这个字符串/home*/
+	app.controller('homeCtrl',['$scope','$rootScope',function($scope,$rootScope){
+		$scope.name = '123';
+		//利用$rootScope交换数据;
+		$rootScope.exchange = '123' ;
+		
+		$scope.studentData = studentData;/*调用另一个页面的json数据，并在home1中访问*/
+		console.log($scope.studentData)
+	}])
+	
+	/*以下是显示细节信息的网页。$routeParams:可以获取路由里面的数据*/
+	app.controller('detailCtrl',['$scope','$rootScope','$routeParams',function($scope,$rootScope,$routeParams){		
+		$scope.studentData = studentData[$routeParams.id]
+		$scope.name = '这是detailCtrl控制器';
+		//利用$rootScope交换数据;
+		console.log($routeParams.number);
+		$scope.delete = function(){
+			alert('删除成功')
+			studentData.splice($routeParams.id,1) 
+			window.location.href = '#/home'
+		}
+	}])
+	
+	/*以下是增加信息的控制器*/
+	app.controller('addCtrl',['$scope','$rootScope',function($scope,$rootScope){		
+	
+		$scope.name = '这是addCtrl控制器';
+		
+		$scope.inserStuName;
+		$scope.inserStuinfo;
+		
+		$scope.submitStu = function(){
+			var obj = {};
+			obj.id = studentData.length;
+			obj.name = $scope.inserStuName;
+			obj.info = $scope.inserStuinfo
+			obj.date = new Date();
+			studentData.push(obj)
+			console.log(studentData.length)
+		}
+		
+	}])
+	
+	/*以下是编辑信息的控制器*/
+	app.controller('editCtrl',['$scope','$rootScope','$routeParams','$location',function($scope,$rootScope,$routeParams,$location){		
+		$scope.students = studentData[$routeParams.id];
+			$scope.update = function() {
+				studentData[$routeParams.id] = $scope.students;
+				$location.path('home');
+			}
+	}])
+	
+	/*==========================directive的应用======================================*/
+
+	app.directive('hello', function() {
+	    return {
+	        restrict: 'E',//元素，A：属性，C：样式类，M：注释
+	        template: '<div>Hi there</div>',
+	        replace: true
+	    };
+	});
+</script>
+	<script>
+		//定义些数据jsonp.利用script SRC 的属性，实现跨域调取数据
+			var studentData=[
+				{
+					id:0,
+					name:'举世无双',
+					info:'happiness can be found even in the darkest of times. - albus dumbledore。即使在最黑暗的日子里，也能寻到幸福。',
+					date:new Date()
+				},{
+					id:1,
+					name:'风起天阑',
+					info:'hand and catch you fell out of the tears, but not cut the fundus you伸手，接住你眼角垂落的泪滴，却截不住你眼底的悲伤！',
+					date:new Date()
+				},{
+					id:2,
+					name:'刀光剑影',
+					info:'follow your heart, but be quiet for a while first. learn to trust your heart. 跟着感觉走，静静地。学着去相信自己的内心。',
+					date:new Date()
+				}
+			
+			]
+	</script>
+
+
+</html>

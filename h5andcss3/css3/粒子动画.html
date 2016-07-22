@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<title>canvas位图像素处理</title>
+	</head>
+	<!--getImageData(int x,int y,int width,int height)：该方法获取canvas上从(x,y)点开始，宽为width、高为height的图片区域的数据，该方法返回的是一个CanvasPixelArray对象，该对象具有width、height、data等属性。data属性为一个数组，该数组每4个元素对应一个像素点。
+
+putImageData(CanvasPixelArray data,int x,int y)：将data里的数据放到canvas中从(x,y)点开始的区域。
+
+下面我们就通过这两个方法实现图片每个像素点的rgb翻转-->
+	<body>
+		<canvas id="canvas1" width="500" height="250">
+			您的浏览器不支持canvas标签
+		</canvas>
+		<script type="text/javascript">
+			var canvas1 = document.getElementById('canvas1');
+			var ctx1 = canvas1.getContext('2d');
+			image = new Image();
+			image.src = "img/c6.jpg"
+			image.onload=function(){
+				ctx1.drawImage(image,0,0,500,250);
+			}
+		</script>
+		<br/>
+		<button onclick="draw()">像素翻转</button>
+		<br/>
+		<canvas id="canvas2" width="500" height="250"></canvas>
+		<script type="text/javascript">
+			function draw(){
+				var canvas2 = document.getElementById('canvas2');
+				var ctx2 = canvas2.getContext('2d');
+				var imageData = ctx1.getImageData(0,0,500,250);
+				for(var i=0;i<imageData.data.length;i+=4){
+					imageData.data[i]=255-imageData.data[i];
+					imageData.data[i+1]=255-imageData.data[i+1];
+					imageData.data[i+2]=255-imageData.data[i+2];
+					imageData.data[i+3]=255;
+				}
+				ctx2.putImageData(imageData,0,0);
+			}
+		</script>
+	</body>
+</html>

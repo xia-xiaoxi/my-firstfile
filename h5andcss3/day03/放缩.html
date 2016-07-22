@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: orange;}
+			#mycanvas{border: 1px solid red;background: white;}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="400px" height="400px"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var mycanvas = document.getElementById('mycanvas')
+			var aEffect	 = mycanvas.getContext('2d')
+				aEffect.translate(75,75)//现在75,75变为坐标原点了；75=50+50/2，级找到该图形的中心放缩
+				aEffect.scale(2,2)
+				aEffect.fillStyle = "#00BFFF"//填充颜色
+				aEffect.fillRect(50,50,50,50);//绘制图形,此处虽然平移了，但是x和y轴并不需要做任何改变，
+			}
+		
+		
+		
+	
+	</script>
+</html>

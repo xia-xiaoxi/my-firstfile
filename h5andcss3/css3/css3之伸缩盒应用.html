@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{padding: 0;
+				margin: 0;
+			}
+			
+			p{clear: both;}
+			 section{
+				float: left;
+				height: 50px;
+			}
+			.article1 section:nth-child(1){
+				background: red;
+				width: 33.3%;
+			}
+			.article1 section:nth-child(2){
+				background: green;
+				width: 33.3%;
+			}
+			.article1 section:nth-child(3){
+				background: blue;
+				width: 33.3%;
+			}
+			
+			.article2 {
+				width: 100%;
+				display: flex;
+			}
+			/*flex都等于1表示每个占的宽度是一样的，即分成三等分，若第一个flex等于2即表示分成四份第一个占两份*/
+			.article2 section:nth-child(1){
+				background: red;
+				flex: 1;
+			}
+			.article2 section:nth-child(2){
+				background: green;
+				flex: 1;
+			}
+			.article2 section:nth-child(3){
+				background: blue;
+				flex: 1;
+			}
+			
+			.article3{width: 500px;}
+			.article3 section:nth-child(1){
+				background: red;
+				width: 33.3%;
+			}
+			.article3 section:nth-child(2){
+				background: green;
+				width: 33.3%;
+			}
+			.article3 section:nth-child(3){
+				background: blue;
+				width: 33.3%;
+			}
+			
+			.article4 {
+				width: 500px;
+				display: flex;
+			}
+			/*flex都等于1表示每个占的宽度是一样的，即分成三等分，若第一个flex等于2即表示分成四份第一个占两份*/
+			.article4 section:nth-child(1){
+				background: red;
+				flex: 1;
+			}
+			.article4 section:nth-child(2){
+				background: green;
+				flex: 1;
+			}
+			.article4 section:nth-child(3){
+				background: blue;
+				flex: 1;
+			}
+			
+			.article5{
+				color: white;
+				font-size: 30px;
+				text-align: center;
+				display: flex;
+				height: 50px;
+				flex-direction: row-reverse;
+			}
+			.article5 section:nth-child(1){
+				background: red;
+				flex: 1;
+			}
+			.article5 section:nth-child(2){
+				background: green;
+				flex: 1;
+			}
+			.article5 section:nth-child(3){
+				background: blue;
+				flex: 1;
+			}
+		
+			.article6{
+				border: 1px solid black;
+				width: 600px;
+				color: white;
+				font-size: 30px;
+				text-align: center;
+				display: flex;
+				height: 50px;
+				flex-direction: row-reverse;
+			}
+			.article6 section:nth-child(1){
+				background: red;
+				width: 300px;
+			}
+			.article6 section:nth-child(2){
+				background: green;
+				width: 200px;
+			}
+			.article6 section:nth-child(3){
+				background: blue;
+				width: 150px;
+			}
+			
+			
+			.article7{
+				width: 600px;
+				color: white;
+				font-size: 30px;
+				text-align: center;
+				display: flex;
+				height: 120px;
+				flex-direction:column-reverse;
+			}
+			.article7 section:nth-child(1){
+				background: red;
+				flex: 1;
+			}
+			.article7 section:nth-child(2){
+				background: green;
+				flex: 1;
+			}
+			.article7 section:nth-child(3){
+				background: blue;
+				flex: 1;
+			}
+			
+			.article8{
+				border: 1px solid black;
+				width: 600px;
+				color: white;
+				font-size: 30px;
+				text-align: center;
+				display: flex;
+				height: 50px;
+				flex-wrap:wrap;
+			}
+			.article8 section:nth-child(1){
+				background: red;
+				width: 300px;
+			}
+			.article8 section:nth-child(2){
+				background: green;
+				width: 200px;
+			}
+			.article8 section:nth-child(3){
+				background: blue;
+				width: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<p>使用flex固定宽度</p>
+		<article class="article4">
+			<section></section>
+			<section></section>
+			<section></section>
+			
+		</article>
+		<p>flex100%之后</p>
+		<article class="article2">
+			<section></section>
+			<section></section>
+			<section></section>
+			
+		</article>
+		<p>使用常用的固定宽度</p>
+		<article class="article3">
+			<section></section>
+			<section></section>
+			<section></section>
+			
+		</article><br />
+		<p>flex固定宽度之后，注意宽度比上面要长一个像素</p>
+		<article class="article4">
+			<section></section>
+			<section></section>
+			<section></section>
+			
+		</article>
+		<p>flex方法之改变横向顺序方向（事实上，若使用固定宽度，其自身也会靠父元素右边往左逆序输出）</p>
+		<article class="article5">
+			<section>1</section>
+			<section>2</section>
+			<section>3</section>
+			
+		</article>
+		<p>flex方法之改变竖直顺序方向事实上，若使用固定宽度，其自身也会靠父元素底部往上逆序输出）</p>
+		<article class="article7">
+			<section>1</section>
+			<section>2</section>
+			<section>3</section>
+			
+		</article>
+		<p>flex方法之溢出(子元素总宽度大于父元素，但并不会溢出撑开)</p>
+		<article class="article6">
+			<section>1</section>
+			<section>2</section>
+			<section>3</section>
+			
+		</article>
+		
+		<p>flex方法之flex-wrap</p>
+		<article class="article8">
+			<section>1</section>
+			<section>2</section>
+			<section>3</section>
+			
+		</article>
+		
+	</body>
+</html>

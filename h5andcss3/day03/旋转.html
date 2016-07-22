@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: orange;}
+			#mycanvas{border: 1px solid red;background: white;}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="400px" height="400px"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var mycanvas = document.getElementById('mycanvas')
+			var cEffect	 = mycanvas.getContext('2d')
+				cEffect.translate(100,100)//现在100,100变为坐标原点了；
+				cEffect.rotate(Math.PI*30/180);//旋转30度
+				cEffect.fillStyle = "#00BFFF"//填充颜色
+				cEffect.fillRect(-50,-50,100,100);//绘制图形
+				cEffect.closePath()
+		
+			var aEffect	 = mycanvas.getContext('2d')
+				aEffect.translate(75,75)//现在100,100变为坐标原点了；
+				aEffect.scale(2,2)
+				aEffect.fillStyle = "#00BFFF"//填充颜色
+				aEffect.fillRect(50,50,50,50);//绘制图形
+			}
+		
+		
+		
+	
+	</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		table{margin-left: 50px;}
+			tr{display: block;border: 1px solid orangered;box-shadow:10px 10px 10px orchid;width:1000px;text-align: center;}
+			th{background: yellow;width: 100px;}
+			th:nth-child(4){width: 300px;}
+			th:nth-child(3){width: 500px;}
+			td{background: greenyellow;border: 1px solid black;width: 100px;}
+			td:nth-child(4){background: greenyellow;border: 1px solid black;width: 300px;}
+			td:nth-child(3){background: greenyellow;border: 1px solid black;width: 500px;}
+			a{cursor: pointer;display: block;}
+			.slip{margin-left: 50px;}
+			.test{margin: 50px;}
+		</style>
+	</head>
+	<body>
+		<!--欢迎来到home1网页
+		<a href="#/detail">利用$rootScope在控制器之间交换数据</a>
+		<li ng-repeat='stu in studentData'>
+			第{{stu.id}}同学是{{stu.name}}
+		</li>-->
+		
+		<table class="table table-bordered">
+			<tr>
+				<th>序号</th>
+				<th>名字</th>
+				<th>信息</th>
+				<th>时间</th>
+				
+			</tr>
+			<tr ng-repeat='stu in studentData'>
+				<td>{{stu.id}}</td>
+				<td><a ng-href="#/detail/{{stu.id}}">{{stu.name}}</a></td>
+				<td>{{stu.info}}</td>
+				<td>{{stu.date}}</td>
+			</tr>
+			
+		</table>
+		
+		
+	<a class="slip" href="#/add"><button type="button" class="btn btn-success">新增</button></a>	
+	
+		<div class="test"><!--directive标签测试-->
+			<hello></hello><!--hello标签已经被<div>Hi there</div>替换掉-->
+			
+			
+			
+		</div>
+	</body>
+</html>
+

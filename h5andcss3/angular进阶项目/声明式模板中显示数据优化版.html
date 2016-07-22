@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="angular-1.3.0.js"></script>
+		<title></title>
+		<style type="text/css">
+			.namecard{
+				border : 1px solid #000;
+				border-radius : 10px;
+				padding:10px;
+				width:300px;
+				background:#f0f0f0;
+			}
+		</style>
+	</head>
+	<!--<body ng-app="ezstuff">
+	使用data属性向指令实现代码传递变量名
+		<ez-namecard data="window.sb"></ez-namecard>
+		此处将sb的对象建立在window下面
+			需要注意的是：挂在window对象（命名空间）上的，即window.sb。 如果所有的数据都挂在window上
+			保不齐哪天就会出现变量的命名冲突。解决办法：
+			AngularJS引入了一个自用的命名空间，也就是$rootScope对象，这样sb变量就可以 挂在$rootScope上了，即$rootScope.sb。
+	
+	</body>-->
+	
+	<!--优化版本-->
+		<!-- ng-app指令在body这个DOM对象上建立了$rootScope对象 -->
+	<body ng-app="ezstuff" ng-init="sb = {name:'somebody',gender:'male',age:28}">
+		<!-- 注意我们传入的变量名没加命名空间-->
+		<ez-namecard data="sb"></ez-namecard>
+	</body>
+	<!--我们用了两个内置指令：
+		ng-app指令会在启动引导时创建一个$rootScope对象。
+		ng-init指令用来在作用域上初始化变量，这个指令将在$rootScope上建立sb对象。
+	-->
+	
+	<script>
+	
+	angular.module("ezstuff",[])
+	.directive("ezNamecard",function(){
+		return {
+			restrict : "E",
+			template : "<div class='namecard'>",
+			replace : true,
+			link : function(scope,element,attrs){
+				var sb = scope.$eval(attrs.data);/*与之前使用eval函数进行表达式估值不同，我们直接使用scope的$eval方法获 得sb变量的值。*/
+				element.append("<div>name : " + sb.name + "</div>")
+					.append("<div>gender : " + sb.gender + "</div>")
+					.append("<div>age : " + sb.age + "</div>")
+			}
+		};
+	});
+
+
+
+	</script>
+</html>

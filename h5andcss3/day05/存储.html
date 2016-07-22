@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		function saveData(id){
+			var mydata = document.getElementById(id);
+			var mydataVal = mydata.value
+			localStorage.setItem("msg",mydataVal)
+		}
+		function showData(id){
+			var pShow = document.getElementById(id);
+			var showData = localStorage.getItem("msg");
+			pShow.innerHTML = showData
+		}
+		function deleteData(){
+			localStorage.clear()
+		}
+	</script>
+	<body>
+		<input type="text" id="text" name="text" value="" />
+		<input type="button" value="保存数据" onclick="saveData('text')" />
+		<input type="button" value="显示数据" onclick="showData('msg')" />
+		<input type="button" value="删除数据" onclick="deleteData()" />
+		<p id="msg"></p>
+	</body>
+</html>

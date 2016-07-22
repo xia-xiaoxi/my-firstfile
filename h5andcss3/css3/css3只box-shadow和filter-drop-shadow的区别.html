@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		/*
+		 filter: drop-shadow(x偏移, y偏移, 模糊大小, 色值);
+		 *box-shadow顾名思意“盒阴影”，只是盒子的阴影；你想啊，这盒子中间明明是透明的，结果，阴影的时候，居然光线没有穿透；但是drop-shadow就符合真实世界的投影，非透明的颜色，我就有投影；透明部分，光线穿过，没投影，而什么盒子不盒子的，跟我没有任何关系。
+drop-shadow不仅可以穿透代码构建的元素的透明部分，PNG图片的透明部分也是可以穿透的 
+		 * */
+			.box {
+			    margin: 40px; padding: 50px;
+			    background-color: #fff;
+			    position: relative;
+			    font-size: 24px;
+			}
+			.cor {
+			    position: absolute;
+			    left: -40px;
+			    width: 0; height: 0;
+			    overflow: hidden;
+			    border: 20px solid transparent;/*transparent边框全部透明*/
+			    border-right-color: #fff;/*右边框一个颜色，将出现三角*/
+			    
+			}
+			.box-shadow {
+			    box-shadow: 5px 5px 10px black;
+			}
+			.drop-shadow {
+			    -webkit-filter: drop-shadow(5px 5px 10px black);
+			}
+			.border{
+				width: 400px;
+				border: 10px dashed #beceeb;
+				margin-top: 50px;
+			}
+			.border1{
+				border: 10px dashed #beceeb; box-shadow: 5px 5px 10px black;
+			}
+			.border2{
+				border: 10px dashed #beceeb; -webkit-filter: drop-shadow(5px 5px 10px black);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box box-shadow">
+		    <i class="cor"></i>
+		    box-shadow
+		</div>
+		<div class="box drop-shadow">
+		    <i class="cor"></i>
+		    filter: drop-shadow
+		</div>
+		<div class="border border1">
+			盒阴影
+		</div>
+		<div class="border border2">
+			阴影（注意穿透了）
+		</div>
+	</body>
+</html>
+
+
+

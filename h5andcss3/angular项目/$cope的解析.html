@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+	<div ng-app="myApp">
+		<h1>Hello {{ name }}</h1>
+	</div>
+	<script>
+		//$scope 的所有属性，都可以自动被视图访问到。假设我们有如下的HTML,我们希望 {{ name }} 变量是本地 $scope 的一个属性;
+		angular.module('myApp', [])
+			.run(function($rootScope) {
+				$rootScope.name = "World";
+			});
+		
+		/*angular.module('myApp',[])
+		.haha (function($rootScope){
+			$rootScope.name = "World"
+		})*/
+	</script>
+
+	</body>
+</html>

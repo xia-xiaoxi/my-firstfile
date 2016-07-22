@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			address{width: 400px;height: 151px;background:greenyellow;border: 1px solid black;margin: 0px 50px;box-shadow: 10px 10px 10px darkred;}
+			h4{margin-left: 50px;}
+			p{height: 25px;margin: 0;border-bottom: 1px solid black;}
+			p:nth-child(1){background:paleturquoise;}
+			p:nth-child(2){background:yellow;}
+			p:nth-child(3){background:pink;height: 75px;}
+			p:nth-child(4){background:orange;}
+			a{margin-left: 50px;margin-top: 20px;display: block;float:left}
+		</style>
+	</head>
+	<body>
+		<!--<section ng-controller ="detailCtrl">
+			这是detail里的：{{name}}
+		</section>
+		<a href="#/home">利用$rootScope在控制器之间交换数据</a>-->
+		
+		<h4>该人基本信息一览：</h4>
+		<address>
+		<p>代号是:{{studentData.id}}</p>
+		  <p>名字是：{{studentData.name}}</p>
+		  <p>信息是：{{studentData.info}}</p>
+		   <p>	时间：{{studentData.date}}</p>
+		</address>
+		<a  href="#/edit/{{studentData.id}}">编辑</a>
+		<a  ng-click="delete()"">删除</a>
+	</body>
+</html>

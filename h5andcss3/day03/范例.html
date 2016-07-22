@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style type="text/css">
+  </style>
+
+  <script type="text/javascript">
+		 function ready(){
+			  var canvas = document.getElementById('canvas');
+			  var context = canvas.getContext('2d'); 
+			  context.translate(160,30);//平移
+			  context.fillStyle='rgba(255,0,0,0.25)';//填充
+			  context.fillRect(0,0,100,50)
+			 var i=0
+			 // for(var i=0;i<50;i++){} 
+				timer = setInterval(function(){
+			 		i++;
+			 	context.translate(25,25);//平移
+			  	context.scale(0.95,0.95);//扩大。所有的方法包括扩大，他们的对象都是针对后面要画出的图形，而非canvas画布。因此后面的fillRecr函数画的矩形的宽仍然是100，高仍然是50.这里相当于把这个矩形扩大为原来的0.95倍。
+			    context.rotate(Math.PI/10);//旋转。
+			   context.fillRect(0,0,100,50);//画矩形 这里仍然是画（0,0,100,50）
+			 	if(i==100){
+			 		clearInterval(timer)
+			 	}
+			  },100)
+			 
+		  
+		 };
+  </script>
+</head>
+<body>
+  <canvas id="canvas" style="border: 1px solid #C9C9C9;" width="300" height="300">
+  </canvas>
+<input type="button" value="显示" onClick="ready() ">
+</body>
+</html>

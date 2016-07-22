@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: black;}
+			#canvas{background: white;}
+			/*#canvas{width: 400px;height: 400px;}*/
+		</style>
+		<script>
+			window.onload = function(){
+				var mycanvas = document.getElementById('canvas')
+				var cEffect  =  mycanvas.getContext('2d')
+					cEffect.moveTo(10,10)
+					cEffect.lineTo(100,100)
+					cEffect.lineTo(200,100)
+					cEffect.lineTo(100,200)
+					cEffect.fillStyle = "red"
+					cEffect.fill()//填充了颜色似乎没什么差别，区域为我们自动闭合的区域
+					cEffect.strokeStyle = "black"
+					cEffect.stroke()//可以看到填充的描边只是描上我们直接挂过的线条部分
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="400px" height="400px" ></canvas>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			td{border: 1px solid red;background: yellow;}
+		</style>
+		<script src="angular-1.3.0.js"></script>
+	</head>		
+<body>
+	<!--ng-repeat指令，遍历一个数据集合中的每个数据元素，并且加载HTML模版把数据渲染出来，当我们要向HTML容器节点中添加更多类似DOM元素的时候，使用ng-repeat是再好不过了。使用方法，如下示例：-->
+	<div ng-app="" ng-init="friends = [
+	   {name:'Tom', age:25}, 
+	   {name:'Jerry', age:28},
+	   {name:'Tom', age:25}, 
+	   {name:'Jerry', age:28}]">
+ 
+	   <table>
+	     <tr ng-repeat="x in friends"><!--注意，ng-repeat指令对于集合中(数组中)的每一项都会渲染一次HTML元素-->
+	       <td> {{ 'Name：'+ x.name +' ，Age：'+ x.age}} </td>
+	     </tr>
+	   </table>
+</div>
+</body>
+</html>

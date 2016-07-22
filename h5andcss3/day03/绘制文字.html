@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: orange;}
+			#mycanvas{border: 1px solid red;background: white;}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="400px" height="400px"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var mycanvas = document.getElementById('mycanvas')
+			var cEffect	 = mycanvas.getContext('2d')
+				cEffect.font = "30px impact";
+				cEffect.textBaseline = 'top'//middle bottom
+				cEffect.fillText('beautiful',100,100)//字体和坐标点
+				cEffect.strokeText('beautiful',200,200)//文字以画线条形式出现
+				
+				
+				
+			}
+	
+	</script>
+</html>

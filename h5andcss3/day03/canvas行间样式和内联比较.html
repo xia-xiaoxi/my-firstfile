@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: black;}
+			#canvas{background: white;}
+			/*#canvas{width: 400px;height: 400px;}*/
+		</style>
+		<script>
+			window.onload = function(){
+				var mycanvas = document.getElementById('canvas')
+				var cEffect  =  mycanvas.getContext('2d')
+					cEffect.fillStyle = "red"
+					cEffect.fillRect(0,20,100,100)
+					cEffect.fill()
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="400px" height="400px" ></canvas>
+	</body>
+</html>

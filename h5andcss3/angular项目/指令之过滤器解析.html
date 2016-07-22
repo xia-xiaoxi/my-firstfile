@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			td{border: 1px solid red;background: yellow;}
+		</style>
+		<script src="angular-1.3.0.js"></script>
+	</head>		
+<body>
+	<!--使用AngularJS过滤器可以实现对字符串的大小写转换、货币格式的转换、数组的过滤等等。
+	用法：管道字符(|)+过滤器名。过滤器uppercase、lowercase对字符串转换大、小写，如下所示：-->
+	<div ng-app="">
+	    请输入字符: <input type="text" ng-model="name">
+	    大写字母结果为： {{ name | uppercase}}
+	       <!--过滤器currency，可以将数字转换成货币格式-->
+	       
+	        请输入: <input type="text" ng-model="value">
+	       美元符号结果为： {{ value | currency}}
+	</div>
+</div>
+</body>
+</html>

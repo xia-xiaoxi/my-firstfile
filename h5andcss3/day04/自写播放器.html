@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{padding: 0;margin:0;}
+			input{float: left;border: none;height: 20px;text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;color: red;}
+			#video{margin: 0 auto;border: 1px solid red;background: #1f1f1f;}
+			.icon{width: 600px;height: 50px;background: #1F1F1F;}
+			#process{width:400px;height: 20px;background: #09D1B1;float: left;position: relative;}
+			.tiao{width: 20px;height:20px;background:red;position: absolute;cursor: pointer;}
+			#volume{width:122px;height: 20px;background: yellow;float: left;position: relative;}
+			#showtime{display: block;width: 20px;height: 10px;border-bottom-left-radius:30% ;background:greenyellow ;margin-top: -10px;}
+		</style>
+		<script>
+			window.onload = function(){
+				
+				var oPlay  = document.getElementById('bofang')//播放按钮
+				var oVideo = document.getElementById('video')
+				var oMuted  = document.getElementById('jingyin')//静音按钮
+				var oProcess = document.getElementById('process')
+				var otiao1 = document.getElementById('tiao1')
+				var oVlume = document.getElementById('volume')
+				var otiao2 = document.getElementById('tiao2')
+				var showTime = document.getElementById('showtime')
+				var Timer = null;
+				oPlay.onclick = function(){
+					if(oVideo.paused){
+						oVideo.play()
+						this.value = "暂停";
+						
+						changeTime()
+						Timer = setInterval(changeTime,1000)
+						
+					}else{
+						oVideo.pause();
+						this.value = "播放";
+						clearInterval(Timer)
+					}
+				}
+				//console.log(oVideo.muted)
+				oMuted.onclick = function(){
+					if(!oVideo.muted){
+						oVideo.muted = true
+						this.value = "静音"
+					}else{
+						oVideo.muted = false
+						this.value = "有音"
+					}
+				}
+				
+				function changeTime(){
+					var ratio = oVideo.currentTime/oVideo.duration
+					//console.log(oVideo.currentTime)
+					var Width = oProcess.offsetWidth - otiao1.offsetWidth
+					var Left = Width*ratio
+					otiao1.style.left = Left+"px";
+					
+				}
+				
+				
+				/*=============拖动视频播放进度===================*/
+				otiao1.onmousedown = function(ev){
+					var ev = window.event||ev
+					var disX = ev.clientX - otiao1.offsetLeft
+					//console.log(disX)
+					document.onmousemove = function(ev){
+						var ev = window.event||ev
+						var Left = ev.clientX - disX
+						if(Left<0){
+							Left = 0;
+						}else if(Left>oProcess.offsetWidth-otiao1.offsetWidth){
+							Left = oProcess.offsetWidth-otiao1.offsetWidth
+						}
+						//console.log(Left)
+						otiao1.style.left = Left+'px';
+						/*=================与进度绑定（适合火狐）================*/
+						var ratio = Left/(oProcess.offsetWidth-otiao1.offsetWidth)
+							oVideo.currentTime = ratio*oVideo.duration ;//改变进度，比率乘以总时间
+						
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null
+					}
+					return false;
+				}
+				
+				
+				/*================初始化音量====================*/
+				otiao2.style.left = oVlume.offsetWidth-otiao2.offsetWidth+'px';
+				
+				/*==============拖动音量条改变音量====================*/
+				otiao2.onmousedown = function(ev){
+					var ev = window.event||ev
+					var disX = ev.clientX - otiao2.offsetLeft
+					//console.log(disX)
+					document.onmousemove = function(ev){
+						var ev = window.event||ev
+						var Left = ev.clientX - disX
+						if(Left<0){
+							Left = 0;
+						}else if(Left>oVlume.offsetWidth-otiao2.offsetWidth){
+							Left = oVlume.offsetWidth-otiao2.offsetWidth
+						}
+						//console.log(Left)
+						otiao2.style.left = Left+'px';
+						
+						/*=================与音量绑定============*/
+						var ratio = Left/(oVlume.offsetWidth-otiao2.offsetWidth)
+							oVideo.volume = ratio ;//改变音量
+						
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null
+					}
+					return false;
+				}
+			
+				/*================移入显示滚动条上面的时间，移除隐藏======================*/	
+		/*	function showTime(){
+				alert(1)
+				var nowTime = oVideo.currentTime
+				console.log(nowTime)
+				var Minute = settleTime(Math.floor(nowTime%3600/60));//取余3600得到剩余的分钟数；
+				var Sencond = settleTime(Math.floor(nowTime%60));//区域60只剩下剩余的秒数;
+				console.log(Minute)
+				//return Minute+':'+Sencond
+			}	
+			
+			function settleTime(num){
+				if(num<=9){
+					return '0'+num ;
+				}else{
+					return ''+num;
+				}
+				
+			}*/
+		}	
+	</script>
+	</head>
+	<body>
+		<video id="video" width="600px" height="260px" controls>
+			<source src="../B.mp4" type="video/mp4"></source>
+			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+		</video>
+		<div class="icon">
+			<input type="button" id="bofang" value="播放"/>
+			<div id="process">
+				<div class="tiao" id="tiao1">
+					<span id="showtime"></span>
+				</div>
+			</div>
+			<input type="button" id="jingyin" value="静音" />
+			<div id="volume">
+				<div class="tiao" id="tiao2">
+					
+				</div>
+			</div>
+			
+		</div>
+		
+	</body>
+</html>

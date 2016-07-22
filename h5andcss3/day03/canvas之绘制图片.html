@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: black;}
+			#canvas{background: white;}
+			/*#canvas{width: 400px;height: 400px;}*/
+		</style>
+		<script>
+		/*说明：canvas上绘制图片，不是用来展示的，canvas功能更强大，比如，把图片画到canvas上，可以像PS中的滤镜一样，对图片进行修改，而且最后还能保存为新图片。*/
+		/*语法：canvas中有个现成的绘制图片的方法即drawImage，他的语法如下：
+				drawImage(image, x, y)
+				drawImage(image, x, y, width, height)width及height，即你决定把图片绘制的高度和宽度。
+				drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+		 s其实是slice的意思，即切割；d你可以理解为draw。有时候我们不需要画出整个图片——可能一张图片上只有某个区域是我们想要的，这时候我们可以把想要的那一块切出来，在绘制到canvas上。(sx,sy)是原图片上开始切割的坐标，而(sWidth,sHeight)则是你要切割多宽多高；后面的dx,dy,dWidth,dHeight则与用法2相同。
+		 
+		 例：ctx.drawImage(jpg,10,10,200,200,40,40,200,200);
+		 这表示在原图jpg的10,10的位置开始切割下来一个200*200大小的块，然后把这块儿绘制到canvas上40,40的坐标处，并且大小依旧是200*200。
+		 * */
+			window.onload = function(){
+				var mycanvas = document.getElementById('canvas')
+				var cEffect  =  mycanvas.getContext('2d')
+					cEffect.moveTo(10,10)
+					cEffect.lineTo(100,100)
+					cEffect.lineTo(200,100)
+					cEffect.lineTo(100,200)
+					cEffect.fillStyle = "red"
+					cEffect.fill()//填充了颜色似乎没什么差别，区域为我们自动闭合的区域
+					cEffect.strokeStyle = "black"
+					cEffect.stroke()//可以看到填充的描边只是描上我们直接挂过的线条部分
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="400px" height="400px" ></canvas>
+	</body>
+</html>

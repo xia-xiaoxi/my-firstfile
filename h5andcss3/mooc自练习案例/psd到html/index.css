@@ -1,0 +1,19 @@
+
+
+/*每一块的居中容器（重要）*/
+.public-header{
+	height: 110px;
+	background: grey;
+	
+}
+.public-container{
+	position: relative;
+	margin: 0 auto;
+	background: #106dcc;
+	width: 1100px;
+}
+
+.public-footer{
+	height: 118px;
+	background: #006DCC;
+}

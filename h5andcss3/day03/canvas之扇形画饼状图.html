@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: black;}
+			#canvas{background: white;}
+			/*#canvas{width: 400px;height: 400px;}*/
+		</style>
+		<script>
+		/*函数中画路径的时候，就先画弧线，再从终点连到圆心，再从圆心连到起点。为什么？因为这个顺序路径才不会断——arc是从起点开始画起的，最后路径又回到起点，才合情合理。在测试函数的时候，我想当然的先画了弧线，再从起点连圆心连终点，结果导致路径断了*/
+			window.onload = function(){
+				var mycanvas = document.getElementById('canvas')
+				var cEffect  =  mycanvas.getContext('2d')
+					//cEffect.moveTo(300,300)
+					cEffect.moveTo(250,250)
+					cEffect.arc(250,250,50,0,1.5*Math.PI,false)
+					cEffect.closePath()
+					cEffect.stroke()
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="400px" height="400px" ></canvas>
+	</body>
+</html>

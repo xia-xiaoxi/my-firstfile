@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		img{float: left;width: 300px;height: 200px;}
+		.img3{width: 600px;height: 400px;}
+		 div{float:left;width: 190px; height: 80px;border: 1px solid #666;line-height: 20px;text-align: center;font-weight: 900;  font-size: 14px;color: #fff;margin: 10px auto;	}
+		 
+		.toTop {
+				  background-image:-webkit-linear-gradient(to top, orange, green);
+				  background-image:linear-gradient(to top,orange,green);
+			}
+		.toTop-deg{
+				  background-image:-webkit-linear-gradient(0deg, orange, green);
+				  background-image:linear-gradient(0deg,orange,green);
+				}
+		.toTopLeft {
+				  background-image:-webkit-linear-gradient(to top left, orange, green);
+				  background-image:linear-gradient(to top left,orange,green);
+				}
+		.toTopLeft-deg{
+				  background-image:-webkit-linear-gradient(315deg, orange, green);
+				  background-image:linear-gradient(315deg,orange,green);
+				}
+		.more-toRight{
+				width:600px;
+			  background-image:-webkit-linear-gradient(to right, red, orange,yellow,green,blue,indigo,violet);
+ 			 background-image:linear-gradient(to right, red, orange,yellow,green,blue,indigo,violet);
+			}
+			
+			.more-toLight {
+						width:800px;
+					  background-image:-webkit-linear-gradient(
+					    to left, 
+					    rgba(255,0,0,0) 0%, 
+					    rgba(255,0,0,0.8) 7%, 
+					    rgba(255,0,0,1) 11%, 
+					    rgba(255,0,0,1) 12%, 
+					    rgba(255,252,0,1) 28%, 
+					    rgba(1,180,7,1) 45%, 
+					    rgba(0,234,255,1) 60%, 
+					    rgba(0,3,144,1) 75%, 
+					    rgba(255,0,198,1) 88%, 
+					    rgba(255,0,198,0.8) 93%, 
+					    rgba(255,0,198,0) 100%); 
+					  background-image:linear-gradient(
+					    to left, 
+					    rgba(255,0,0,0) 0%, 
+					    rgba(255,0,0,0.8) 7%, 
+					    rgba(255,0,0,1) 11%, 
+					    rgba(255,0,0,1) 12%, 
+					    rgba(255,252,0,1) 28%, 
+					    rgba(1,180,7,1) 45%, 
+					    rgba(0,234,255,1) 60%, 
+					    rgba(0,3,144,1) 75%, 
+					    rgba(255,0,198,1) 88%, 
+					    rgba(255,0,198,0.8) 93%, 
+					    rgba(255,0,198,0) 100%); 
+				  }
+		</style>
+	</head>
+	<body>
+		<ul class="img">
+			<img src="img/moz-gradient.jpg"/>
+			<img src="img/o-gradient.jpg"/>
+			<img class="img3"    src="img/webkit-gradient.jpg"/>
+		</ul>
+		
+		<div class="toTop">
+			(to top, orange, green)
+			toTop(橙色从下往上变为绿色)(其他四个方向类似)
+		</div>
+		<div class="toTop-deg">
+			(0deg, orange, green)
+			0deg(橙色从下往上变为绿色)
+			0deg==360deg==-360deg
+		</div>
+		<div class="toTopLeft">
+			(to top, orange, green)
+			toTop(橙色从右下往左上上变为绿色)(其他四个方向类似)
+		</div>
+		<div class="toTopLeft-deg">
+			(315deg, orange, green)
+			315deg(橙色从下往上变为绿色)
+			-45deg==315deg
+		</div>
+		<div class="more-toRight">
+			(to right, red, orange,yellow,green,blue,indigo,violet)
+			(多种颜色依次显示方向为从左往右,其余方向类似)
+			
+		</div>
+		
+		<div class="more-toLight">
+			 to left, 
+			rgba(255,0,0,0) 0%, 
+		    rgba(255,0,0,0.8) 7%, 
+		    rgba(255,0,0,1) 11%, 
+		    rgba(255,0,0,1) 12%, 
+		    rgba(255,252,0,1) 28%, 
+		    rgba(1,180,7,1) 45%, 
+		    rgba(0,234,255,1) 60%, 
+		    rgba(0,3,144,1) 75%, 
+		    rgba(255,0,198,1) 88%, 
+		    rgba(255,0,198,0.8) 93%, 
+		    rgba(255,0,198,0) 100%); 
+			(指定颜色改变处具体的位置，多种颜色依次显示方向为从右往左,其余方向类似)
+			
+		</div>
+		
+	</body>
+</html>

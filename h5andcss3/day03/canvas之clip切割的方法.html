@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: black;}
+			canvas{background: white;}
+			/*#canvas{width: 400px;height: 400px;}*/
+		</style>
+		<script>
+		
+			window.onload = function(){
+				var mycanvas = document.getElementById('canvas')
+				var cEffect  =  mycanvas.getContext('2d')
+				cEffect.beginPath();
+				cEffect.rect(100,100,100,100);
+				cEffect.fill();	
+				/*clip的作用是依照前面创建的路径进行一次切割，然后所有在clip之后画的图形都只有在被切割的路径内才会显示，路径外的则不得显示。而且如果不做处理的话clip()是一直存在的，其后的所有图形都会被限制在这个范围值内。*/
+				var mycanvas1 = document.getElementById('canvas1')
+				var cEffect  =  mycanvas1.getContext('2d')
+				cEffect.arc(100,100,50,0,Math.PI*2);//对比上面的图形进行切割路径；
+				cEffect.clip();//在此句之后的所有图形都只能显示存在切割部分的内容；
+				
+				cEffect.beginPath();
+				cEffect.rect(100,100,100,100);
+				cEffect.fill();	
+			/*那么，问题来了，怎么消除之前设置的clip()呢，请看下列：*/
+			
+				var mycanvas2 = document.getElementById('canvas2')
+				var cEffect  =  mycanvas2.getContext('2d')
+				cEffect.save()//此处先保存为加切割时的情况
+				cEffect.arc(100,100,50,0,Math.PI*2);//对比上面的图形进行切割路径；
+				cEffect.clip();//在此句之后的所有图形都只能显示存在切割部分的内容；
+				
+				cEffect.beginPath();
+				cEffect.rect(100,100,100,100);
+				cEffect.fill();	
+				
+				cEffect.restore();//恢复未切割的情况
+				cEffect.beginPath();
+				cEffect.arc(100,100,50,0,2*Math.PI,true);
+				cEffect.fillStyle = "red"
+				cEffect.fill();	
+				/*可以发现恢复后，图形不受影响，此外clip不只是对画出的图形生效，也可以用来保证路径外的图形不被清除，比如我想在一个大矩形上挖一个洞，请看下列：*/
+				
+				
+				var mycanvas3 = document.getElementById('canvas3')
+				var cEffect  =  mycanvas3.getContext('2d')
+				cEffect.fillRect(10,10,100,100);
+				cEffect.beginPath();//clip会以上一个beginPath()后面所绘的所有路径进行一个切割，即使你已经对这些路径进行过操作（如fill）。
+				cEffect.arc(30,30,20,0,Math.PI*2);
+				//cEffect.arc(50,30,20,0,Math.PI*2);//再写一个，当然也计算进入重叠部分
+				cEffect.fill();
+				cEffect.clip();//切割后，相当于现在矩形中只有一个圆在里面了，即重叠部分；
+				cEffect.clearRect(10,10,100,100);//清除的时候当然也只清除重叠部分，其余的部分将保留；
+				
+			/*通常我们在用canvas做一个游戏的时候，需要清除某些小区域——这些区域通常是不规则的，以前我还抱怨过canvas只能按矩形区域清空，很不灵活，自从有了clip，就不用担心这个问题了。*/
+				
+				
+
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="400px" height="400px" ></canvas>
+		<canvas id="canvas1" width="400px" height="400px" ></canvas>
+		<canvas id="canvas2" width="400px" height="400px" ></canvas>
+		<canvas id="canvas3" width="400px" height="400px" ></canvas>
+	</body>
+</html>

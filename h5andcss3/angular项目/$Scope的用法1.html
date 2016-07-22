@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			.show-scope-demo .ng-scope,.show-scope-demo .ng-scope {
+				border: 1px solid red;
+				margin: 3px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="show-scope-demo">
+			<div ng-controller="GreetCtrl">
+				Hello {{name}}!
+			</div>
+			<div ng-controller="ListCtrl">
+				<ol>
+					<li ng-repeat="name in names"><!-- ng-repeat迭代数组-->
+						{{name}} from {{department}}
+						<!--注意此处的department在此处是并没有这个属性的，但是在GreetCtrl中定义了$rootScope.department = 'Angular'，那么此处会自动往上依次找，知道找到为止-->
+					</li>
+				</ol>
+			</div>
+		</div>
+	</body>
+	<script src="angular-1.3.0.js"></script>
+	<script>
+		function GreetCtrl($scope, $rootScope) {
+			$scope.name = 'World';
+			$rootScope.department = 'Angular';/*创建$rootScope属性，类似于全局变量*/
+		}
+		
+		function ListCtrl($scope) {
+			$scope.names = ['Igor', 'Misko', 'Vojta'];
+		}
+
+	</script>
+</html>
+

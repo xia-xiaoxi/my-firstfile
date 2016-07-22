@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas{display: block;margin: 0 auto;border: 1px solid #AAAAAA;}
+		</style>
+	
+	</head>
+	<body>
+		<!--绘图接口drawImage，使用方法二context.drawImage(image,dx,dy,dw,dh)
+			其中image是js中的一个图像对象
+			四个参数中的d表示destination即目的地的意思，即表示对canvas的操作
+			dx,dy即为坐标点，即从什么位置开始绘制这个坐标点；
+			dw,dy,即指定绘制的宽和高，如果指定的话，该方法将自动将图片进行缩放处理；
+		-->
+		<canvas id="canvas" width="1000px" height="600px">
+			你的浏览器尚不支持canvas
+		</canvas>
+		
+			
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas");
+			var context = canvas.getContext("2d");
+			var image = new Image();/*创建一个image对象，可能需要经常对image进行操作，所以放在函数外面*/
+			window.onload = function(){
+				//canvas.width = 1152;
+				//canvas.height = 768;/*注意，此处写法实现的效果与内联样式写的效果是一样的*/
+				image.src = "img.jpg"/*写入图片地址*/
+				image.onload = function(){/*表示当图片读取完成后再进行操作（必须）*/
+					context.drawImage(image,0,0,canvas.width,canvas.height)/*写入对象并且从0，0位置开始,将图片放缩为整个画布大小*/
+					//context.drawImage(image,100,100)/*将x,y，改成100,100，后图片绘制的起始点位置将在canvas（100,100）的位置，这样的话，图片如果和canvas开始时如果是等宽高，那么将有一部分的图像不能在canvas画布上正常显示，因为被canvas自动裁掉出去了*/
+				}
+			}
+		</script>
+		
+		
+	</body>
+</html>

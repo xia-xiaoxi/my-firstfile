@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>This is  a form demo</title>
+</head>
+<body>
+<form action="">
+   username:<input type="text" placeholder="enter name" name="username" autofocus  required readonly/>
+    <br>
+    password:<input type="password" name="psd" autofocus>
+    <br>
+     age:<input type="number" name="age" min="20" max="60" step="5"/>
+    <br>
+    <!--need double check-->
+    <!--<input type="text" name="num" maxlength="11"/>-->
+    <!--need double check-->
+    <input type="url" name="url"/>
+    <br>
+    <input type="email" name="email"/>
+    <br>
+    <input type="text" pattern="[0-9]{3}" name="text" placeholder="输入三个数字" title="输入三个数字" />
+    <br>
+    <input type="text" name="name" autocomplete="on"/>
+    <input type="reset" value="Reset">
+    <input type="submit" value="Submit" formnovalidate="formnovalidate"/>
+</form>
+
+<!--test range start-->
+<!--<form oninput="sum.value=parseInt(a.value)+parseInt(b.value)">-->
+<!--<input type="range" value="5" min="0" max="10" step="2" id="a"/>+-->
+<!--<input type="number" value="50" id="b"/>=-->
+<!--<output name="sum" for="a b"></output>-->
+<!--</form>-->
+<!--test range end-->
+
+<!--test file start -->
+<!--<form action="">-->
+<!--<input type="file" accept=".pdf,.rtf" multiple/>-->
+<!--<input type="text" name="name" autocomplete="on"/>-->
+<!--</form>-->
+<!--test file end-->
+
+<!--<select name="" id="">
+    <option value="Baidu">Baidu</option>
+    <option value="Qian feng">Qian feng</option>
+    <option value="blackberry">blackberry</option>
+    <option value="qq">qq</option>
+</select>
+</br>-->
+
+<!--for datalist start-->
+<!--<input type="text" list="datalist"/>
+<datalist id="datalist">
+    <option value="Baidu" label="bd"></option>
+    <option value="Qian feng" label="qf"></option>
+    <option value="blackberry"></option>
+    <option value="qq"></option>
+</datalist>-->
+<!--for datalist end-->
+
+<!--for output start-->
+<!--<form oninput="sum.value=parseInt(a.value)+parseInt(b.value)">
+    <input type="number" id="a" value=""/>+
+    <input type="number" id="b" value="30">=
+    <output name="sum" for="a b"></output>
+</form>-->
+<!--for output end-->
+
+<!--for ol start-->
+<!--<ol  style="list-style: none" type="1" start="4" reversed>
+    <li>BMW</li>
+    <li>Audi</li>
+    <li>BYD</li>
+    <li>MZD</li>
+</ol>-->
+<!--for ol end-->
+
+</body>
+</html>

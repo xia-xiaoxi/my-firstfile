@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input[type="text"]{margin-bottom: 10px;}
+			.butn{background: pink;width: 50px;height: 20px;}
+			.insert{height: 100px;}
+		</style>
+		<script src="../jquery-1.12.0.js"></script>
+		<script>
+		$(function(){
+			var $iTem = $('.text')
+			//console.log($iTem.length)
+			
+			var index=0
+			$('.butn').on('click',function(){
+					var $Data = new Object//新建一个对象，并往下给其添加个中属性；
+					$Data.name = $iTem.eq(0).val();
+					$Data.email = $iTem.eq(1).val();
+					$Data.phone = $iTem.eq(2).val();
+					$Data.note = $iTem.eq(3).val();
+					var str = JSON.stringify($Data)//将对象转换为json格式的文本数据
+					localStorage.setItem($Data.name,str)
+			})
+			
+			$('.search').on('click',function show(){
+				var searchdata = $('.searchdata').val();
+				var Data = localStorage.getItem(searchdata)
+				var data = JSON.parse(Data)//将该数据转换成json对象
+				//console.log(data.name)
+				if(Data){
+					/*==========判断是否存在此用户================*/
+					var result = "姓名:"+data.name+'<br>';
+					result += "邮箱:"+data.email+'<br>';
+					result += "号码:"+data.phone+'<br>';
+					result += "笔记:"+data.note+'<br>';
+					console.log(result)
+					$('.insert').html(result)
+				}else{
+					
+					alert('不存在此用户！请检查！！！')
+				}
+			})
+		/*
+		 1.parse 用于从一个字符串中解析出json 对象。例如
+
+			var str='{"name":"cpf","age":"23"}'
+			
+			经 JSON.parse(str) 得到：
+			
+			Object: age:"23"
+					 name:"cpf"
+				    _proto_:Object；
+			ps:单引号写在{}外，每个属性都必须双引号，否则会抛出异常
+			
+			2.stringify用于从一个对象解析出字符串，例如
+				var a={a:1,b:2}
+				经 JSON.stringify(a)得到：
+				“{“a”:1,"b":2}”
+ 
+		 * */
+			
+		})
+		</script>
+	</head>
+	<body>
+		
+		  <fieldset>
+		    <legend>info page</legend>
+		
+		   		<label for="" >Names:</label>
+		   		<input type="text" class="text" /><br />
+		   		
+		   		<label for="" >Email:</label>
+		   		<input type="text" class="text" /><br />
+		   		<label for="" >Phone:</label>
+		   		<input type="text" class="text" /><br />
+		   		<label for="" >Notes:</label>
+		   		<input type="text" class="text" /><br />
+		   
+		   	<button class="butn">save</button>
+		  	 <hr />
+		  	
+		  	 <input type="text" class="searchdata"/>
+		  	 <button class="search">search</button>
+		  	 <div class="insert">
+		  	 	
+		  	 </div>
+		  </fieldset>
+		
+	</body>
+</html>

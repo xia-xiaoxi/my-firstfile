@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			form{margin: 0 50px;}
+			input{width: 400px;}
+		</style>
+	</head>
+	<body>
+		<!--欢迎来到add页面！不服来干。。。。-->
+		<form>
+			 <div class="form-group">
+    <label for="exampleInputName2">新增同学</label>
+    <input type="text" ng-model="inserStuName"  id="exampleInputName2" placeholder="请输入人名">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">输入内容</label>
+    <input type="text" ng-model="inserStuinfo"  id="exampleInputEmail2" placeholder="请输入信息">
+  </div>
+			 
+			 <a href="#/home"><button ng-click="submitStu()" type="submit" class="btn btn-default">提交</button></a> 
+		</form>
+	</body>
+</html>

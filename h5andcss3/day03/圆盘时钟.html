@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: orange;}
+			#mycanvas{background: #FAEBD7;}
+		</style>
+		<script>
+			window.onload=function(){
+				var myCanvas = document.getElementById('mycanvas')
+				var oEffect = myCanvas.getContext('2d')
+				
+				function timechange(){
+					/*==========================获取本地时间========================*/
+						
+					var oDate = new Date();
+					var oHours = oDate.getHours();
+						
+					var oMin = oDate.getMinutes();
+					var oSen = oDate.getSeconds();
+					console.log(oHours)
+					/*==========================处理本地时间与圆盘上的90度差异========================*/
+					if(oHours>12){
+						oHours = oHours-12
+					}
+					var hours =	(oHours*30+oMin/2-90)*Math.PI/180	/*分针为30的时候,时针走动15度,所以除以2 */
+					var minutes = (oMin*6-90)*Math.PI/180
+					var seconds = (oSen*6-90)*Math.PI/180
+					
+					
+					
+					/*==========================创建初始圆盘格子========================*/
+					oEffect.lineWidth =1
+					oEffect.beginPath();
+					for(var i=0;i<60;i++){
+						oEffect.moveTo(200,200)
+						oEffect.arc(200,200,100,6*i*Math.PI/180,6*(i+1)*Math.PI/180,false)
+						
+					}
+					oEffect.strokeStyle = 'black'
+					oEffect.closePath()
+					oEffect.stroke()
+					/*==========================盖住上一个圆盘========================*/
+					oEffect.lineWidth =1
+					oEffect.beginPath();
+					oEffect.moveTo(300,200)
+					oEffect.arc(200,200,96,0,2*Math.PI,false)
+					oEffect.closePath()
+					oEffect.fillStyle = "#FAEBD7"
+					oEffect.fill();
+					/*==========================创建五分长格线========================*/
+					oEffect.lineWidth =2
+					oEffect.beginPath();
+					for(var i=0;i<12;i++){
+						oEffect.moveTo(200,200)
+						oEffect.arc(200,200,100,30*i*Math.PI/180,30*(i+1)*Math.PI/180,false)
+						
+					}
+					oEffect.strokeStyle = 'black'
+					oEffect.closePath()
+					oEffect.stroke()
+					/*==========================盖住上一个圆盘========================*/
+					oEffect.beginPath();
+					oEffect.moveTo(300,200)
+					oEffect.arc(200,200,90,0,2*Math.PI,false)
+					oEffect.closePath()
+					oEffect.fillStyle = "#FAEBD7"
+					oEffect.fill();
+				
+					/*==========================创建时分秒指针========================*/
+					oEffect.lineWidth = 2
+					oEffect.beginPath();
+					
+					oEffect.moveTo(200,200)
+					oEffect.arc(200,200,86,seconds,seconds,false)
+					oEffect.strokeStyle = 'yellow'
+					oEffect.closePath()
+					oEffect.stroke()
+					
+					oEffect.lineWidth = 3
+					oEffect.beginPath();
+					oEffect.moveTo(200,200)
+					oEffect.arc(200,200,70,minutes,minutes,false)
+					oEffect.strokeStyle = 'orange'
+					oEffect.closePath()
+					oEffect.stroke()
+					
+					oEffect.lineWidth = 4
+					oEffect.beginPath();
+					oEffect.moveTo(200,200)
+					oEffect.arc(200,200,50,hours,hours,false)
+					oEffect.strokeStyle = 'red'
+					oEffect.closePath()
+					oEffect.stroke()
+					
+					
+				}
+				setInterval(timechange,1000)	
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="400px" height="400px"></canvas>
+	</body>
+</html>

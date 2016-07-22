@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: black;}
+			canvas{background: white;}
+			/*#canvas{width: 400px;height: 400px;}*/
+		</style>
+		<script>
+			window.onload = function(){
+				var mycanvas = document.getElementById('canvas1')
+				var cEffect  =  mycanvas.getContext('2d')
+					cEffect.lineWidth=10
+					cEffect.moveTo(10,10)//画笔点在（10,10）处落笔开始
+					cEffect.lineTo(10,300)
+					cEffect.lineTo(300,300)
+					cEffect.lineTo(300,10)
+					cEffect.lineTo(10,10)
+					cEffect.stroke()
+			/*以上代码可以发现左上角会有一个缺口，为什么会有缺口，因为最后一行连线回去的时候仅仅覆盖边界长
+			 	为什么仅有它有，其他三个没有，因为它其他三个角并没有抬笔，而是直线连接过去的，请看下列：
+			 * 
+			 * */
+			var mycanvas2 = document.getElementById('canvas2')
+				var cEffect  =  mycanvas2.getContext('2d')
+				cEffect.lineWidth=10
+				cEffect.moveTo(10,10)//画笔点在（10,10）处落笔开始
+				cEffect.lineTo(10,300)
+				
+				cEffect.moveTo(10,300)//再次抬笔落笔，可看出端倪，在（10,300）处也多了缺口
+				cEffect.lineTo(300,300)
+				cEffect.lineTo(300,10)
+				cEffect.lineTo(10,10)
+				cEffect.stroke()
+			/*解决办法是，一次性连接上所有曲线，但必须用closePath闭合曲线即可
+			 请看下列：
+			 * */
+			var mycanvas3 = document.getElementById('canvas3')
+				var cEffect  =  mycanvas3.getContext('2d')
+				cEffect.lineWidth=10
+				cEffect.moveTo(10,10)//画笔点在（10,10）处落笔开始
+				cEffect.lineTo(10,300)
+				cEffect.lineTo(300,300)
+				cEffect.lineTo(300,10)
+				//cEffect.lineTo(10,10)//此句可不写，效果一样
+				cEffect.closePath()//封闭曲线，将这个矩形闭合，将不会出现缺口
+				cEffect.stroke()
+			/*此处确实闭合了所有缺口，但我们还想改变四个角的弯曲角度，那怎么办呢？请看下列：*/
+			
+				var mycanvas4 = document.getElementById('canvas4')
+				var cEffect  =  mycanvas4.getContext('2d')
+				cEffect.lineWidth=10
+				cEffect.moveTo(10,10)//画笔点在（10,10）处落笔开始
+				cEffect.lineTo(10,300)
+				cEffect.lineTo(300,300)
+				cEffect.lineTo(300,10)
+				//cEffect.lineTo(10,10)//此句可不写，效果一样
+				cEffect.closePath()//封闭曲线，将这个矩形闭合，将不会出现缺口；
+				cEffect.lineJoin = "round" /*miter(默认，尖角)，bevel（斜角）,round（圆角）*/
+				cEffect.stroke()
+				
+				/*lineJoin即为绘制圆角，此外还有一个名叫linegap的属性，类似*/
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas1" width="400px" height="400px" ></canvas>
+		<canvas id="canvas2" width="400px" height="400px" ></canvas>
+		<canvas id="canvas3" width="400px" height="400px" ></canvas>
+		<canvas id="canvas4" width="400px" height="400px" ></canvas>
+	</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li:last-child{color: green;}
+			li:first-child{color: red;}
+			
+			span:only-child{background: orange;}/*注意此处应用于div中的span,该伪元素只能应用于含有一个子元素的元素上面*/
+			#box1 p:nth-child(1){background: yellow;}/*匹配第一个p元素*/
+			#box1 span:nth-child(1){background: yellow;}/*注意此处，因为span并不是第一个子元素，所以此句将无意义*/
+			#box1 p:nth-last-child(2){background:peru;}/*匹配倒数第二个p元素*/
+			#box1 span:nth-last-child(3){background: deepskyblue;}/*注意此处，因为span正好是倒数第三个，所以应用成功*/
+			
+			#box2 p:first-of-type{background: yellow;}/*匹配第一个p元素*/
+			#box2 span:first-of-type{background: yellow;}/*此类选择器将自动去匹配该重标签在父元素中的第一个出现的位置并应用样式*/
+			#box2 p:last-of-type{background: blueviolet;}/*匹配倒数第一个p元素*/
+			#box2 p:nth-of-type(3){background: orangered;}/*匹配第三个个p元素*/
+			#box2 span:nth-last-of-type(1){background:royalblue;}/*匹配倒数第三个span元素*/
+			
+			#box3 p:empty{background: gray;height: 20px;width: 100px;border: 1px solid red;}
+					/*匹配没有任何子元素（包括text节点）,若p里面有空格也不行*/
+			
+			form input:checked{outline:1px solid red;}/*匹配表单元素选中的部分*/
+			form input[type='text']:disabled{background: red;}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>我的父元素是ul,我是第一个li元素</li>
+			<li>我的父元素是ul,我是第二个li元素</li>
+			<li>我的父元素是ul,我是第三个li元素</li>
+		</ul>
+		
+		<div>
+			<span>我的父元素是div,我是唯一的li元素</span>
+		</div>
+		
+		<h3>box1部分</h3>
+		<div id="box1">
+			<p>我是box1中的第一个p元素</p>
+			<p>我是box1中的第二个p元素</p>
+			<span>我是box1中的第一个span元素</span>
+			<p>我是box1中的第三个p元素</p>
+			<span>我是box1中的第二个span元素</span>
+			
+			<p>我是box1中的第四个p元素</p>
+			<p>我是box1中的第五个p元素</p>
+		</div>
+		
+		<h3>box2部分</h3>
+		<div id="box2">
+			<p>我是box2中的第一个p元素</p>
+			<p>我是box2中的第二个p元素</p>
+			<span>我是box2中的第一个span元素</span>
+			<p>我是box2中的第三个p元素</p>
+			<span>我是box2中的第一个span元素</span>
+			<span>我是box2中的第三个span元素</span>
+			<p>我是box2中的第四个p元素</p>
+			<p>我是box2中的第五个p元素</p>
+		</div>
+		
+		<h3>box3部分</h3>
+		<div id="box3">
+			<p>我是box3中的第一个p元素</p>
+			<p></p>
+			<p>我是box3中的第三个p元素</p>
+			
+		</div>
+		
+		<h3>表单元素部分</h3>
+		<form action="">
+			<input type="checkbox" />腾讯
+			<input type="checkbox" />百度
+			<input type="checkbox" />阿里
+		</form>
+		<form action="">
+			<input type="text" disabled="disabled" placeholder="禁用表单"/>
+			<input type="text" />
+		</form>
+		
+	</body>
+</html>

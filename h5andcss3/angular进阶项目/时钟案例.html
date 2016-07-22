@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div.clock{
+				padding:10px;
+				margin: 0px auto;
+				width:400px;
+				background:#000;
+				color:#0f0;
+			}	
+		</style>
+		<script src="angular-1.3.0.js"></script>
+	
+	</head>
+
+<body ng-app="ezstuff"><!-- 内置的ng-app指令通知编译器启动AngularJS框架-->
+	<!-- 我们自己定义的ez-clock指令通知编译器生成时钟widget-->
+	<ez-clock></ez-clock>
+</body>
+
+		
+		<script>
+			angular.module("ezstuff",[])//创建模块ezstuff
+			.directive("ezClock",function(){//在模块上注册指令ezClock的类工厂
+				return {
+					restrict : "E",//元素名称
+				/*	E - 元素名称： <my-directive></my-directive>
+					A - 属性名： <div my-directive=”exp”></div>
+					C - class名： <div class=”my-directive:exp;”></div>
+					M - 注释 ： <!-- directive: my-directive exp */
+					
+					replace : true,
+					/*replace - 如果设置为true，那么模版将会替换当前元素，而不是作为子元素添加到当前元素中。（注：为true时，模版必须有一个根节点）*/
+					template : "<div class='clock'></div>",
+					/*template - 如果replace 为true，则将模版内容替换当前的HTML元素，并将原来元素的属性、class一并迁移；如果为false，则将模版元素当作当前元素的子元素处理。想了解更多的话，请查看“Creating Widgets”章*/
+					link : function(scope,element,attrs){
+						setInterval(function(){
+							//获取当前时间
+							var d = new Date();
+			
+							//element对应引用该指令的DOM对象的jqLite封装
+							element.text(d.toString());
+						},1000);
+					}
+				}
+			})
+		/*
+		 分析：
+		  我们在模板中使用了一个自定义的标签ez-clock，而它变成了一个会动的时钟， 这期间发生了什么事情?肯定不是浏览器干的，它不认识ez-clock是什么东西。angular.min.js引入了基本的angularJS库，它会在浏览器载入HTML文档并且 建立好DOM树后，执行以下操作：
+找到有ng-app属性的DOM节点以这个节点为根节点，搜索自定义指令，发现ez-clock调用ez-clock指令的实现函数（指令类工厂）进行展开根据我们的定义，ez-clock的展开操作如下：
+使用一个div元素替换这个自定义标签创建一个定时器，在定时器触发时刷新div元素的innerTextez-clock这样的非HTML标准标签，在AngularJS中之所以称为指令/directive， 就是指看到它时，基础框架需要对其进行解释，以便展开成浏览器可以理解 的东西（HTML元素和脚本），而这个解释的过程被称为：编译。
+可见，AngularJS框架要求将HTML文档和JavaScript代码分割的更清晰，通常混杂在 HTML文档中的JavaScript代码，需要以指令的形式进行封装，而模板、指令 实现代码这两个部件，则由基础框架负责拼装运行。
+		  
+		 
+		 * */
+		</script>
+</html>

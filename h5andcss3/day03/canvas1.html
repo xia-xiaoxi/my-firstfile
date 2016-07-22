@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: orange;}
+			#mycanvas{border: 1px soldi red;background: white;}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="400px" height="400px"></canvas>
+	</body>
+	<script type="text/javascript">
+	window.onload = function(){
+		var mycanvas = document.getElementById('mycanvas')
+		var cEffect	 = mycanvas.getContext('2d')
+		cEffect.fillStyle="red";
+		cEffect.moveTo(50,100);
+		cEffect.lineTo(300,300)
+		cEffect.lineTo(100,300);
+		cEffect.closePath();
+		cEffect.stroke();
+		cEffect.fill()
+		
+		
+		
+	}
+	
+	</script>
+</html>

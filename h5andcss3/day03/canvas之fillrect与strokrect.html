@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: black;}
+			canvas{background: white;}
+			/*#canvas{width: 400px;height: 400px;}*/
+		</style>
+		<script>
+			window.onload = function(){
+				var mycanvas = document.getElementById('canvas')
+				var cEffect  =  mycanvas.getContext('2d')
+					cEffect.fillStyle = "red";
+					cEffect.fillRect(0,20,100,100);//值接用此方法画出一个矩形并填充颜色；
+					cEffect.stroke()//可以看到，此句不会有任何作用；
+				/*注意上面的强调，这和我们直接用线画一个矩形出来是不一样的，这个不能描边，如果想
+				 别的区别，则请看下列：
+				 * */
+				var mycanvas1 = document.getElementById('canvas1')
+				var cEffect  =  mycanvas1.getContext('2d')
+					cEffect.fillStyle = "red";//rect的参数与fillRect和strokeRect毫无差别，不同的是他画出的只是路径，至于描边或是填充要你后续自己完成。
+					cEffect.rect(0,20,100,100);//值接用此方法画出一个矩形并填充颜色；
+					cEffect.stroke()//可以看到，此句不会有任何作用；
+					cEffect.fill()
+			/*补充：rect及fillRect等，其宽度与高度参数可以是负数，表示向相反的方向画，谨记。*/	
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="400px" height="400px" ></canvas>
+		<canvas id="canvas1" width="400px" height="400px" ></canvas>
+	</body>
+</html>

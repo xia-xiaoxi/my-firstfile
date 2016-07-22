@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		/*	一、限制left/top/bottom/right四个属性*/
+			.box1{
+				width: 400px;height: 200px;background: red;border: 1px solid green;position: relative;float: left;
+			}
+			.son1{border: 1px solid green;width: 300px;height: 100px;position: absolute;top:0;left: 0;background: yellow;}
+			/*二、限制z-index层级,父级设置了z-index，此处设置再小的z-index值也没用*/
+			.box2{
+				width: 400px;height: 200px;background: red;border: 1px solid green;position: relative;float: left;z-index: 0;
+			}
+			.son2{border: 1px solid green;width: 300px;height: 100px;position: absolute;z-index:-9999;background: yellow;}
+			/*三、父级设置了relative，是的overflow:hidden能对absolute元素正常的应用*/
+			.box3{
+				width: 400px;height: 200px;background: red;border: 1px solid green;position: relative;float: left;overflow: hidden;
+			}
+			.son3{border: 1px solid green;width: 300px;height: 300px;position: absolute;background: yellow;}
+		</style>
+	</head>
+	<body>
+		<img src="images/relativeandabsolute.jpg"/>
+		<div class="box1">
+			
+			<div class="son1">
+				一、限制left/top/bottom/right四个属性
+			</div>
+		</div>
+		
+		<div class="box2">
+			
+			<div class="son2">
+				二、限制z-index层级,父级设置了z-index，此处设置再小的z-index值也没用,（当然必须注意的是，此父元素的z-index为具体的数值，如果是auto的话，则不成立，但此句注意在ie6和7则不成立）
+			</div>
+		</div>
+		
+		<div class="box3">
+			
+			<div class="son3">
+				三、父级设置了relative，是的overflow:hidden能对absolute元素正常的应用
+			</div>
+		</div>
+	</body>
+</html>

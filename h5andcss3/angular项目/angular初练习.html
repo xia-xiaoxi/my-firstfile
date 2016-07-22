@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="Angular.js"></script>
+	</head>
+	<!--AngularJS引入了三个主要的概念，期望让前端开发更系统化一些：
+
+		声明式界面开发
+		双向数据绑定
+		使用依赖注入解耦-->
+		
+	<!--jQuery是一个库，库总是被动的，就像工具，应用的开发逻辑是你的，在 某一点上需要用一下工具，就用好了。框架则非常不同，这意味着AngularJS为应用已经搭起了一个架子，约定了 一些组成部分，并且实现了这些部分的拼装运行。换句话说， 应用的开发逻辑是AngularJS的，你得跟着它走。所以，AngularJS难学一些，因为它有一个架子在那，你不了解这个架子， 基本没法下手。-->
+	<body ng-app="angularDemo" ng-controller="studentCtrl">
+		<p>angular学习</p>
+		<p id="text">好好学习</p>
+		<p>{{text}}，非常好！！！</p><!--{{}}表示取值的意思-->
+	</body>
+	<script>
+		console.log(angular)
+		document.getElementById('text').innerHTML = "123"
+		
+		
+		var app=angular.module("angularDemo",[]);//模块化
+		console.log(app)
+		app.controller('studentCtrl',function($scope){
+			$scope.text = "123"
+		})
+		/*$scope 对象就是一个普通的JavaScript对象，我们可以在其上随意修改或添加属性。
+$scope 对象在AngularJS中充当数据模型，但与传统的数据模型不一样， $scope 并不负责处
+理和操作数据，它只是视图和HTML之间的桥梁，它是视图和控制器之间的胶水*/
+		
+	</script>
+	
+</html>

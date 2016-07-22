@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		h4{color: red;font-size: bold;}
+			textarea{background: coral;color: coral;}
+			body{margin: 50px;}
+			span{float: left;color: royalblue;font-weight: bold;}
+			p{color: blueviolet;font-weight: bold;}
+		</style>
+	</head>
+	<body>
+		<h4>正在编辑第{{students.id}}同学</h4>
+		<span>姓名：</span>
+		<p ng-bind="students.name" ></p>	
+		<span>更新时间：</span>
+		<p ng-bind="students.date" ></p>
+		 内容：
+		<textarea ng-model="students.info" class="form-control" rows="3"></textarea>
+		<br>
+		<button ng-click="update()" class="btn btn-success">提交</button>
+	</body>
+</html>

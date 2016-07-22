@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		body{background: black;}
+			#canvas{display: block;margin: 0 auto;border: 1px solid #AAAAAA;}
+			#range{display: block;margin: 20px auto;width: 800px;}
+		</style>
+	
+	</head>
+	<body>
+		<!--绘图接口drawImage，使用方法三、context.drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh)
+			目的：在一张图像上面截取想要的区域导入到画布上指定的区域
+			其中image是js中的一个图像对象
+			四个参数中的s表示source即资源的意思，即表示对源图像的操作；
+			sx,sy即为图像的起始坐标点，即从图像的什么位置开始截取图像；
+			sw,ds,即指定截取图像部分的宽和高；
+			四个参数中的d表示destination即目的地的意思，即表示对canvas的操作
+			dx,dy即为坐标点，即从什么位置开始绘制这个坐标点；
+			dw,dy,即指定绘制的宽和高，如果指定的话，该方法将自动将图片进行缩放处理；
+			
+		-->
+		<canvas id="canvas" width="1152px" height="768px">
+			你的浏览器尚不支持canvas
+		</canvas>
+		<input type="range" id="range" min="0.5" max="3.0" step="0.01" value="1.0"/>
+			
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas");
+			var context = canvas.getContext("2d");
+			var slider = document.getElementById("range")
+			var image = new Image();/*创建一个image对象，可能需要经常对image进行操作，所以放在函数外面*/
+			
+				window.onload = function(){
+					
+					var scale = slider.value
+					console.log(scale)
+					image.src = "img-lg.jpg"/*写入图片地址*/
+					image.onload = function(){/*表示当图片读取完成后再进行操作（必须）*/
+							drawImageByScale1(scale)
+					slider.onmousemove = function(){/*不用onchange的原因是，拖动滚动条时不会生效，只有当放开滚动条才生效*/
+						scale = slider.value;
+						drawImageByScale1(scale)
+					}
+				
+				}
+			}
+			function drawImageByScale1(scale){
+				var imgWidth = 1152*scale
+				var imgHeight = 768*scale
+				
+			/*	var sx = imgWidth/2-canvas.width/2;
+				var sy = imgHeight/2 - canvas.height/2;//此法有缺陷,当scale是小数的时候有bug
+				context.drawImage(image,sx,sy,canvas.width,canvas.height,0,0,canvas.width,canvas.height)*/
+				
+				var dx = canvas.width/2 - imgWidth/2;//改变目标图像的dx和dy;这样不会导致上面的bug;
+				var dy = canvas.height/2 - imgHeight/2;
+				context.clearRect(0,0,canvas.width,canvas.height)//每次调用清空画布
+				context.drawImage(image,dx,dy,imgWidth,imgHeight)
+			}
+		</script>
+		
+		
+	</body>
+</html>

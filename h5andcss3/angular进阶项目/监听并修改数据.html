@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul.nceditor{
+				list-style:none;
+				padding:10px;
+				margin:0px;
+				width:300px;
+				border:1px solid #787878;
+				line-height:30px;
+			}
+		</style>
+		<script src="angular-1.3.0.js"></script>
+	</head>
+	<body ng-app="ezstuff" ng-init="sb = {name:'somebody',gender:'male',age:28}">
+		<!-- 下面两个指令都绑定到变量sb上-->
+		<ez-namecard-editor data="sb"></ez-namecard-editor>
+		<div ez-logger data="sb"></div>
+		
+	</body>
+	
+	<!--
+	监听数据的变化我们已经实现了将数据显示到界面上，不过这还不够。由于编译仅仅在启动引导时执行一次，这意味着我们的link函数只会被调用一次，那么， 如果数据变化，在界面上将不会有任何反馈，即界面和数据将变得不同步了。这需要持续监听数据的变化。好在AngularJS的scope对象可以使用$watch()方法，对建立在其上的变量的变化进行监听：
+-->
+	
+	
+	<script>
+		angular.module("ezstuff",[])
+		.directive("ezNamecardEditor",function(){
+		return {
+			restrict : "E",
+			template : "<ul class='nceditor'></ul>",
+			replace : true,
+			link : function(scope,element,attrs){
+				//获得变量名称
+				var model = attrs.data;
+	
+				//展开HTML模板，使用field属性标记对应字段
+				element.append("<li>name : <input type='text' field='name'></li>")
+					.append("<li>gender : <input type='text' field='gender'></li>")
+					.append("<li>age : <input type='text' field='age'></li>");
+	
+				//监听DOM事件，变化时修改变量值
+				element.find("input").on("keyup",function(ev){
+					var field = ev.target.getAttribute("field");
+					scope[model][field] = ev.target.value;
+					//将对scope的修改进行传播
+					scope.$apply("");
+				});
+			}
+		};
+	})
+		/*在ez-namecard-editor的指令实现中，为了用input中的值自动更新 sb变量中的值，我们需要在给input对象挂接上监听函数（示例中使用keyup事件）， 在监听函数中实现对sb变量的修改。*/
+		.directive("ezLogger",function(){/*为了验证绑定的效果，我们增加了一个ez-logger指令。这个指令 将一个DOM元素的内容绑定到指定的变量上。*/
+			return {
+				restrict : "A",
+				link : function(scope,element,attrs){
+					var model = attrs.data;
+		
+					scope.$watch(model,function(nv){
+						var cnt = JSON.stringify(nv,null,"	");
+						element.html("<pre>"+cnt+"</pre	");
+					},true);
+				}
+			};
+		});
+
+	</script>
+</html>

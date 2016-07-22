@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<!--
+		定位到某一行ctrl+g
+		打开代码提示alt+/
+		注释ctr+/
+		查找ctr+f
+		查找项目全局的关键词ctrl+h
+		查找文件ctrl+t
+	-->
+	
+	<style>
+		*{padding: 0;margin: 0;}
+		body{width: 100%;height: 100%;background: url(../day01/img/2.jpg);}
+		.section{
+			padding: 20px;
+			
+		}
+		aside{
+			position: relative;
+			height: 300px;
+			
+		}
+		.ul{
+			transition: 2s;
+			width: 200px;
+			height: 200px;
+			list-style: none;
+			position: relative;
+			left: 50%;
+			top: 50%;
+			margin-left: -100px;
+			margin-top: ;
+			-webkit-transform-style: preserve-3d;
+			-webkit-animation: rotate1 3s linear 1s;	-moz-transform-style: preserve-3d;
+		
+		}
+		.ul.active{
+			-webkit-animation:ul1 8s infinite
+		}
+		@-webkit-keyframes ul1{
+			from{
+				-webkit-transform: rotateX(0deg) rotateY(0deg);
+				-webkit-transform-origin: center center; 
+			
+			}
+			to{
+				-webkit-transform: rotateX(360deg) rotateY(360deg);
+				-webkit-transform-origin: center center; 
+			}
+		}
+		
+		li{box-shadow:  0 0 30px rgba(255,0,0,0.9);text-align: center;font-size: 60px;line-height: 200px;border-radius: 30px;opacity: .5;text-shadow:2px 2px 5px  #EE1199;}
+		.box{
+			height: 200px;
+			width: 200px;
+			position: absolute;
+		}
+		li:nth-child(1){
+			transition: 2s;
+			background: orange;
+			-webkit-transform: translateX(100px) rotateY(90deg);
+			-moz-transform: translateX(100px) rotateY(90deg);
+		}
+		li:nth-child(1).active{
+			-webkit-animation:li1 8s infinite
+		}
+		@-webkit-keyframes li1{
+			from{
+				-webkit-transform: translateX(100px) rotateY(90deg);
+				-webkit-transform-origin: center center; 
+			
+			}
+			to{
+				-webkit-transform: translateX(200px) rotateY(90deg) ;
+				-webkit-transform-origin: center center; 
+			}
+		}
+		li:nth-child(2){
+			transition: 2s;
+			background: red;
+			-webkit-transform: translateX(-100px) rotateY(90deg);
+			-moz-transform: translateX(-100px) rotateY(90deg);
+		}
+		li:nth-child(2).active{
+			-webkit-animation:li2 8s infinite
+		}
+		@-webkit-keyframes li2{
+			from{
+				-webkit-transform: translateX(-100px) rotateY(90deg);
+				-webkit-transform-origin: center center; 
+			
+			}
+			to{
+				-webkit-transform: translateX(-200px) rotateY(90deg) ;
+				-webkit-transform-origin: center center; 
+			}
+		}
+		
+		li:nth-child(3){
+			transition: 2s;
+			background: yellow;
+			-webkit-transform: translateY(100px) rotateX(90deg);
+			
+		}
+		li:nth-child(3).active{
+			-webkit-animation:li3 8s infinite
+		}
+		@-webkit-keyframes li3{
+			from{
+				-webkit-transform: translateY(100px) rotateX(90deg);
+				-webkit-transform-origin: center center; 
+			
+			}
+			to{
+				-webkit-transform: translateY(200px) rotateX(90deg) ;
+				-webkit-transform-origin: center center; 
+			}
+		}
+		
+		li:nth-child(4){
+			transition: 2s;
+			background: blueviolet;
+			-webkit-transform: translateY(-100px) rotateX(90deg);
+			-moz-transform: translateY(-100px) rotateX(90deg);
+		}
+		li:nth-child(4).active{
+			-webkit-animation:li4 8s infinite
+		}
+		@-webkit-keyframes li4{
+			from{
+				-webkit-transform: translateY(-100px) rotateX(90deg);
+				-webkit-transform-origin: center center; 
+			
+			}
+			to{
+				-webkit-transform: translateY(-200px) rotateX(90deg) ;
+				-webkit-transform-origin: center center; 
+			}
+		}
+		
+		li:nth-child(5){
+			transition: 2s;
+			background: pink;
+			-webkit-transform: translateZ(100px);
+			-moz-transform: translateZ(100px);
+		}
+		li:nth-child(5).active{
+			-webkit-animation:li5 8s infinite
+		}
+		@-webkit-keyframes li5{
+			from{
+				-webkit-transform:translateZ(100px);
+				-webkit-transform-origin: center center; 
+			
+			}
+			to{
+				-webkit-transform: translateZ(200px) ;
+				-webkit-transform-origin: center center; 
+			}
+		}
+		li:nth-child(6){
+			transition: 2s;
+			background:green;
+			-webkit-transform: translateZ(-100px);
+			-moz-transform: translateZ(-100px);
+		}
+		li:nth-child(6).active{
+			-webkit-animation:li6 8s infinite
+		}
+		@-webkit-keyframes li6{
+			from{
+				-webkit-transform:translateZ(-100px);
+				-webkit-transform-origin: center center; 
+			
+			}
+			to{
+				-webkit-transform: translateZ(-200px) ;
+				-webkit-transform-origin: center center; 
+			}
+		}
+		
+		@-webkit-keyframes rotate1{
+			from{
+				-webkit-transform: rotateX(0deg) rotateY(0deg);
+				-webkit-transform-origin: center center; 
+			
+			}
+			to{
+				-webkit-transform: rotateX(270deg) rotateY(270deg) ;
+				-webkit-transform-origin: center center; 
+			}
+		}
+		@-moz-keyframes rotate1{
+			from{
+				-moz-transform: rotateX(0deg) rotateY(0deg);
+				-moz-transform-origin: center center; 
+			}
+			to{
+				-moz-transform: rotateX(360deg) rotateY(3600deg);
+				-moz-transform-origin: center center; 
+			}
+		}
+		
+	</style>
+	<script src="../jquery-1.12.0.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		var $ul = $('ul')
+		var $aLi = $ul.find('li')
+		console.log($aLi.length)
+		$ul.bind("webkitAnimationEnd",function(){
+			$ul.addClass('active')
+			for(var i=0;i<$aLi.length;i++){
+					$aLi.eq(i).addClass('active')
+					console.log(i)
+			}
+			
+			
+		})
+			
+	})
+		
+		
+	</script>
+	<body>
+		<header></header>
+		<section class="section">
+			<aside>
+				<ul class="ul">
+					<li class="box box1">1</li>
+					<li class="box box1">2</li>
+					<li class="box box1">3</li>
+					<li class="box box1">4</li>
+					<li class="box box1">5</li>
+					<li class="box box1">6</li>
+				</ul>
+			</aside>
+		</section>
+		<footer></footer>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="directive">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular-1.3.0.js"></script>
+		<!--如果有jquery,使用jq，否则，使用我们angular自身封装好的jqlite-->
+		<script src="jquery-1.12.0.js"></script>
+	</head>
+	<body>
+		
+		<div expend="123" expend-type="456" expend-data="哈哈" expend-func = 'test()'>
+			<!--注意，为了更好的得出expend-type以及自定义的属性，格式必须是‘expend-名称 ’的格式   -->
+			我在控制器添加的模板控制块里面里面，我显示为粉色
+		</div>
+		<div expend="123">我在控制器添加的模板控制块里面里面，我显示为粉色</div>
+		<expend>我在控制器添加的模板控制块里面里面，我显示为粉色</expend>
+		<div ng-controller="directiveCtrl">
+			<div expend="123" expend-type="456" expend-data="哈哈" expend-number= "number" >
+				我在控制器添加的模板控制块里面里面，我显示为粉色
+			</div>
+			<div id="text1">我在控制器directiveCtrl里面，我显示为黄色</div>
+		</div>
+		<div id="text">我是页面中独立的div，我显示为青色</div>
+		<!--<div>
+			<div class="title" ng-click ="toggle()">{{title}}</div>
+			<div class="body" ng-show="showMe" ng-transclude>这是内容</div>
+		</div>-->
+	</body>
+	<script>
+		var app = angular.module('directive',[]);
+		app.directive('expend',[function(){
+			return{
+				restrict:'EA',//标签和属性的写法激活此组件
+				replace:true,//replace - 如果设置为true，那么模版将会替换当前元素，而不是作为子元素添加到当前元素中;如果为false，则将模版元素当作当前元素的子元素处理
+				transclude:true,//定义是否将当前元素的内容转移到模板中，使用的时候必须在模板中指定位置加上ng-transclude
+				scope:{
+					text:'@expendData',//传递一个字符串作为属性的值.str : ‘@string’
+					//使用父作用域中的一个属性，绑定数据到指令的属性中.name : ‘=username’
+					text1:'=expendType',//expend-type的驼峰写法
+					//使用父作用域中的一个函数,可以在指令中调用getName : ‘&getUserName’
+					text2:'&test',
+					expend:'=expendNumber'//获取controller里面定义的number的值
+				},
+				template:'<div><div class="title" ng-click ="toggle()">{{title}}'+
+				'</div><div class="body" ng-show="showMe">这是内容<b ng-transclude></b></div></div>',
+				
+		/*如果指令只进行DOM的修改，不进行数据绑定，那么配置在compile函数中，如果指令要进行数据绑定，那么配置在link函数中。*/
+				link:function(scope,element,attrs){//以编程的方式操作DOM，包括添加监听器等，注意此处并没有$符号
+				
+					scope.title = "我们的第一个组件";/**/	
+					//var a = document.getElementById('text');JS原生获取id
+					//var a  = angular.querySelector('#text');angular选择器获取id
+					var b = angular.element(document.querySelector('.body')).html();	
+					console.log(b)
+					
+					//可以操作页面中的所有dom节点，而不仅仅是模板中的元素，并且功能和JQ一样，可以链式调用；
+			angular.element(document.querySelector('#text')).addClass('textClass').css('background','lightgreen')
+			angular.element(document.querySelector('#text1')).addClass('textClass').css('background','yellow')
+			/*如果是类名等非唯一性选择性属性，如id，需要选择全部元素的时候，则要用querySelectorAll选择*/
+			angular.element(document.querySelectorAll('.body')).addClass('textClass').css('background','pink')	
+				
+					scope.toggle = function(){
+						//console.log(scope.showMe)
+						scope.showMe = !scope.showMe;
+					}
+				}
+			}
+			
+		}])
+		
+		app.controller('directiveCtrl',['$scope',function($scope){
+			//alert(1)
+			$scope.title = "我们的第一个组件";
+			$scope.number = 123;
+			
+			var obj = {
+				name:'zhang',
+				age:'20'
+			};
+			var arr = [obj,1,2,'wang'];
+			//extend拓展方法
+			angular.extend(obj,{
+				'action':function(){
+					console.log("我是extend方法")
+				}
+			})
+			//foreach 语句用于循环访问集合以获取所需信息
+			angular.forEach(arr,function(data){
+				console.log(data)
+			})
+			
+			
+			
+			
+		}])
+		
+		function test(){
+			console.log('谢谢')
+		}
+	</script>
+</html>

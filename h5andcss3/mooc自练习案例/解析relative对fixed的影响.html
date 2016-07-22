@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{padding: 0;margin: 0;}
+			.box{width: 1000px;height: 300px;background: yellow;}
+			.box1{
+				width: 200px;height: 200px;background: red;border: 1px solid green;position: fixed;top: 0;left: 0;
+			}
+			
+			.box2{
+				width: 200px;height: 200px;background: red;border: 1px solid green;position: relative;left: 0;top:0;float: left;
+			}
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<img src="images/relative_fixed.jpg"/>
+		<div class="box">
+			<div class="box1">
+				fixed是相对于整个大元素来定位的；
+			</div>
+			
+			<div class="box2">
+				relative是相对自己初始位置定位移动的，比如left:0;top:0，则其表现为精致不动的
+			</div>
+			注意：当同时定义top和bottom时，只有top起作用，类似的当同时定义left和right时，只有left起作用
+			
+		</div>
+	
+	</body>
+</html>

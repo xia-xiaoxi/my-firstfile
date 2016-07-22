@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: orange;}
+			#mycanvas{border: 1px solid red;background: white;}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="400px" height="400px"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var mycanvas = document.getElementById('mycanvas')
+			var cEffect	 = mycanvas.getContext('2d')
+				cEffect.fillStyle = "#00BFFF"
+				cEffect.fill()
+				cEffect.fillRect(100,100,100,100)
+				cEffect.shadowOffsetX=20;//x轴阴影偏移量
+				cEffect.shadowOffsetY=20;//y轴阴影偏移量
+				cEffect.shadowColor="red"//必须设置阴影的颜色，否则偏移量显示不出来;m默认颜色为黑色透明
+				cEffect.shadowBlur = 10;//高斯模糊；
+				cEffect.fillRect(50,50,100,100)
+				
+			}
+		
+		
+		
+	
+	</script>
+</html>

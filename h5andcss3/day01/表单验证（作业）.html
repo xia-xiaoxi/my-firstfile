@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			img{position: fixed;left: 0;right: 0;margin: 0 auto;width: 100%;height: 100%;}
+			form{position: relative;position: relative;z-index: 999;width: 800px;height: 500px;margin: 0 auto;}
+			h3{width: 800px;height: 100px;font-size: 40px;color: antiquewhite;padding-left: 280px;padding-top: 50px;}
+			input{width: 300px;height: 35px;display: block;margin: 10px auto;background: rgba(255,255,255,0.5);border-radius: 6px;color: white;}
+			#reset,#login{background: orangered;}
+		</style>
+		<script src="../jquery-1.12.0.js"></script>
+		<script>
+			$(function(){
+				var $range = $('#range')
+				var $input = $('form').find(':input').not('#reset,#login')
+				console.log($input.length)
+				$(window).on('change',function(){
+					var $value = $range.val()/100;
+					console.log($value)
+					$.each($input, function(i,elem) {    
+					      $input.css(
+					      		'background',"rgba(255,255,255,"+$value+")"
+					      )
+					});
+					
+				})
+				
+				var $img = $('.bgimg').find('img')
+					console.log($img.length)
+					var index=0;
+				setInterval(function(){
+					$img.eq(index).stop().fadeIn(2000).siblings().fadeOut(2000);
+					index++;
+					if(index>2){
+						index=0
+					}
+					
+				},5000)
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<div class="bgimg">
+				<img src="img/1.jpg"/>
+				<img src="img/2.jpg"/>
+				<img src="img/3.jpg"/>
+			</div>
+			
+			
+			<form action="" method="post">
+				<h3>用户信息验证</h3>
+				<input type="text" name="username" id="user" value="" placeholder="username"  autofocus required/>
+				<input type="password" name="pwd" id="pwd" value="" placeholder="password" required/>
+				<input type="text" name="phone" id="phone" pattern="(13[0-9]|14[0-9]|15[0-9]|18[0-9]|17[0-9])[0-9]{8}" value="" placeholder="手机号码"  required/>
+				<input type="number" name="" id="num" value="" placeholder="年龄" min="18" max="40" step="3" required/>
+				
+				<input type="url" name="" id="web" value="" placeholder="喜爱的网站" required/>
+			<!--必填一个url的值-->
+				<input type="email" name="" id="email" value="" placeholder="邮箱地址" required/>
+				<input type="range" name="range" id="range"  placeholder="范围" value="50" min="0" max="100" step="5"/>
+				
+				
+				<input type="reset" value="reset" id="reset"/>
+				<input type="submit" value="login" id="login"/>
+			</form>
+			
+			
+			
+			
+			
+		</div>
+	</body>
+</html>

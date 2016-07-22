@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: orange;}
+			#mycanvas{border: 1px soldi red;background: white;}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="600px" height="600px"></canvas>
+	</body>
+	<script type="text/javascript">
+	window.onload = function(){
+		var mycanvas = document.getElementById('mycanvas')
+		var cEffect	 = mycanvas.getContext('2d')
+			
+			cEffect.beginPath()
+			cEffect.moveTo(100,100)
+			cEffect.quadraticCurveTo(140,20,350,280)//二阶
+			cEffect.stroke()
+			cEffect.closePath();
+			
+			cEffect.beginPath()
+			cEffect.moveTo(200,200)
+			cEffect.bezierCurveTo(10,20,300,30,40,500)
+			cEffect.stroke()
+			cEffect.fillStyle = "red"
+			cEffect.fill()
+			cEffect.closePath()
+	}
+	
+	</script>
+</html>
