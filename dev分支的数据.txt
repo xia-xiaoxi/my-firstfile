@@ -1,0 +1,24 @@
+?首先，我们创建dev分?支，然后切换到dev分?支：
+$ git checkout -b dev
+Switched to a new branch 'dev'
+git checkout 命令加上 -b 参数表?示创建并切换，相当于以下两条命令：
+$ git branch dev
+$ git checkout dev
+Switched to branch 'dev'
+然后，?用 git branch 命令查看当前分?支：
+$ git branch
+* dev
+master
+git branch 命令会列出所有分?支，当前分?支前?面会标?一个*号。
+然后，我们就可以在dev分?支上正常提交，?比如对readme.txt做个修改，加上?一?行：
+Creating a new branch is quick.
+然后提交：
+$ git add readme.txt
+$ git commit -m "branch test"
+[dev fec145a] branch test
+1 file changed, 1 insertion(+)
+现在，dev分?支的?工作完成，我们就可以切换回master分?支：
+$ git checkout master
+Switched to branch 'master'
+切换回master分?支后，再查看?一个readme.txt?文件，刚才添加的内容不?见了！因为那个提
+交是在dev分?支上，?而master分?支此刻的提交点并没有变
