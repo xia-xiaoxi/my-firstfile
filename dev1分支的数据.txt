@@ -1,0 +1,29 @@
+现在，我们把dev分?支的?工作成果合并到master分?支上：
+$ git merge dev
+Updating d17efd8..fec145a
+Fast-forward
+readme.txt | 1 +
+1 file changed, 1 insertion(+)
+git merge 命令?用于合并指定分?支到当前分?支。合并后，再查看readme.txt的内容，就可以
+看到，和dev分?支的最新提交是完全?一样的。
+注意到上?面的Fast-forward信息，Git告诉我们，这次合并是“快进模式”，也就是直接把
+master指向dev的当前提交，所以合并速度?非常快。
+当然，也不是每次合并都能Fast-forward，我们后?面会将其他?方式的合并。
+合并完成后，就可以放?心地删除dev分?支了：
+$ git branch -d dev
+Deleted branch dev (was fec145a).
+删除后，查看branch，就只剩下master分?支了：
+$ git branch
+* master
+因为创建、合并和删除分?支?非常快，所以Git?鼓励你使?用分?支完成某个任务，合并后再删掉
+分?支，这和直接在master分?支上?工作效果是?一样的，但过程更安全。
+?小结
+Git?鼓励?大量使?用分?支：
+查看分?支：git branch
+创建分?支：git branch name
+切换分?支：git checkout name
+
+整理、排版：numbbbbb
+创建+切换分?支： git checkout -b name
+合并某分?支到当前分?支： git merge name
+删除分?支： git branch -d name
